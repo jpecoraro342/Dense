@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		15D3EE6B230FD97900F97FA6 /* Food Weight Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Food Weight Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		15D3EE6B230FD97900F97FA6 /* Dense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D3EE6E230FD97900F97FA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15D3EE70230FD97900F97FA6 /* FoodListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListVC.swift; sourceTree = "<group>"; };
 		15D3EE75230FD97900F97FA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		15D3EE62230FD97900F97FA6 = {
 			isa = PBXGroup;
 			children = (
-				15D3EE6D230FD97900F97FA6 /* Food Weight Calculator */,
+				15D3EE6D230FD97900F97FA6 /* Dense */,
 				15D3EE6C230FD97900F97FA6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,12 +46,12 @@
 		15D3EE6C230FD97900F97FA6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				15D3EE6B230FD97900F97FA6 /* Food Weight Calculator.app */,
+				15D3EE6B230FD97900F97FA6 /* Dense.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		15D3EE6D230FD97900F97FA6 /* Food Weight Calculator */ = {
+		15D3EE6D230FD97900F97FA6 /* Dense */ = {
 			isa = PBXGroup;
 			children = (
 				15D3EE6E230FD97900F97FA6 /* AppDelegate.swift */,
@@ -61,15 +61,15 @@
 				15D3EE79230FD97B00F97FA6 /* LaunchScreen.storyboard */,
 				15D3EE7C230FD97B00F97FA6 /* Info.plist */,
 			);
-			path = "Food Weight Calculator";
+			path = Dense;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		15D3EE6A230FD97900F97FA6 /* Food Weight Calculator */ = {
+		15D3EE6A230FD97900F97FA6 /* Dense */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 15D3EE7F230FD97B00F97FA6 /* Build configuration list for PBXNativeTarget "Food Weight Calculator" */;
+			buildConfigurationList = 15D3EE7F230FD97B00F97FA6 /* Build configuration list for PBXNativeTarget "Dense" */;
 			buildPhases = (
 				15D3EE67230FD97900F97FA6 /* Sources */,
 				15D3EE68230FD97900F97FA6 /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = "Food Weight Calculator";
+			name = Dense;
 			productName = "Food Weight Calculator";
-			productReference = 15D3EE6B230FD97900F97FA6 /* Food Weight Calculator.app */;
+			productReference = 15D3EE6B230FD97900F97FA6 /* Dense.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -99,7 +99,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 15D3EE66230FD97900F97FA6 /* Build configuration list for PBXProject "Food Weight Calculator" */;
+			buildConfigurationList = 15D3EE66230FD97900F97FA6 /* Build configuration list for PBXProject "Dense" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				15D3EE6A230FD97900F97FA6 /* Food Weight Calculator */,
+				15D3EE6A230FD97900F97FA6 /* Dense */,
 			);
 		};
 /* End PBXProject section */
@@ -284,12 +284,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CX87MDXJNH;
-				INFOPLIST_FILE = "Food Weight Calculator/Info.plist";
+				INFOPLIST_FILE = Dense/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.josephpecoraro.food-weight-calc.Food-Weight-Calculator";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.josephpecoraro.dense.dense-calorie-counter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -302,12 +302,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CX87MDXJNH;
-				INFOPLIST_FILE = "Food Weight Calculator/Info.plist";
+				INFOPLIST_FILE = Dense/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.josephpecoraro.food-weight-calc.Food-Weight-Calculator";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.josephpecoraro.dense.dense-calorie-counter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -317,7 +317,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		15D3EE66230FD97900F97FA6 /* Build configuration list for PBXProject "Food Weight Calculator" */ = {
+		15D3EE66230FD97900F97FA6 /* Build configuration list for PBXProject "Dense" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				15D3EE7D230FD97B00F97FA6 /* Debug */,
@@ -326,7 +326,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		15D3EE7F230FD97B00F97FA6 /* Build configuration list for PBXNativeTarget "Food Weight Calculator" */ = {
+		15D3EE7F230FD97B00F97FA6 /* Build configuration list for PBXNativeTarget "Dense" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				15D3EE80230FD97B00F97FA6 /* Debug */,
