@@ -9,21 +9,18 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
+class AppDelegate: NSObject, UIApplicationDelegate {
     
-    var useSwiftUI = false
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = storyboard.instantiateInitialViewController()
-        self.window?.makeKeyAndVisible()
-        
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         return true
+    }
+    
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+
+        let configuration = UISceneConfiguration(name: connectingSceneSession.configuration.name, sessionRole: connectingSceneSession.role
+        )
+        configuration.delegateClass = SceneDelegate.self
+        return configuration
     }
 }
 
