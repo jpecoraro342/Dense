@@ -11,7 +11,7 @@ import SwiftUI
 
 class SceneDelegate: NSObject, UISceneDelegate {
     var window: UIWindow?
-    let useSwiftUI = true
+    let useSwiftUI = false
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {

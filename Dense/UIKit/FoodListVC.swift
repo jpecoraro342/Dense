@@ -8,13 +8,6 @@
 
 import UIKit
 
-
-struct FoodItem : Codable {
-    let name : String
-    let calories : Double
-    let oz : Double
-}
-
 class FoodListVC : UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
@@ -41,6 +34,7 @@ class FoodListVC : UIViewController, UITableViewDataSource, UITableViewDelegate 
         
         loadFromUserDefaults()
         commitChange()
+        loadFood()
     }
     
     func setupNavBar() {
@@ -51,21 +45,27 @@ class FoodListVC : UIViewController, UITableViewDataSource, UITableViewDelegate 
     func loadFromUserDefaults() {
         UserDefaults.standard.register(defaults: ["calsPerDay" : 3000.0])
         
-        if let data = UserDefaults.standard.value(forKey:"foodList") as? Data {
-            food = (try? PropertyListDecoder().decode(Array<FoodItem>.self, from: data)) ?? []
-        }
-        
         caloriesPerDay = UserDefaults.standard.double(forKey: "calsPerDay")
     }
     
+    func loadFood() {
+        Task {
+            self.food = await dataAccessor.food()
+            
+            DispatchQueue.main.async {
+                self.commitChange()
+            }
+        }
+    }
+    
     func saveToUserDefaults() {
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(food), forKey: "foodList")
         UserDefaults.standard.set(caloriesPerDay, forKey: "calsPerDay")
     }
     
     func calculate() {
-        let weight = food.reduce(0, { $0 + $1.oz })
-        let calories = food.reduce(0, { $0 + $1.calories })
+        let foodCalculator = FoodCalculator(foodList: food)
+        let weight = foodCalculator.weight()
+        let calories = foodCalculator.calories()
         
         self.caloriesLabel.text = formatter.string(from: NSNumber(value: calories))
         self.weightLabel.text = getLabel(weight: weight)
@@ -99,7 +99,7 @@ class FoodListVC : UIViewController, UITableViewDataSource, UITableViewDelegate 
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction) in }
         
         let clear = UIAlertAction(title: "Clear All", style: .destructive) { (action:UIAlertAction) in
-            self.food.removeAll()
+            self.food = dataAccessor.clearFood()
             self.commitChange()
         }
         
@@ -151,7 +151,7 @@ class FoodListVC : UIViewController, UITableViewDataSource, UITableViewDelegate 
         let totalCalories = (Double(calories ?? "") ?? 0) * (Double(servings ?? "") ?? 1)
         let newFood = FoodItem(name: name ?? "", calories: totalCalories, oz: Double(weight ?? "") ?? 0)
         
-        food.append(newFood)
+        food = dataAccessor.addFood(food: newFood)
         commitChange()
     }
     
@@ -184,7 +184,7 @@ class FoodListVC : UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            food.remove(at: indexPath.row)
+            self.food = dataAccessor.removeFood(index: indexPath.row)
             commitChange()
         }
     }
