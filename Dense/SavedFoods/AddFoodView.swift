@@ -20,10 +20,15 @@ struct AddFoodView: View {
     var action: (FoodItem?) -> Void
     
     var body: some View {
-        VStack {
-            Text("New Food")
+        ScrollView {
+            Text("Add Food")
                 .fontWeight(.semibold)
                 .padding()
+            
+            BarcodeButtonPrompt { barcode in
+                print(barcode)
+            }
+
             
             TextField("Name", text: $name)
                 .textFieldStyle(.roundedBorder)

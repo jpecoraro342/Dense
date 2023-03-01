@@ -21,7 +21,7 @@ struct ResupplySummaryView: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
-            Color(.white)
+            Color(UIColor.systemBackground)
 //                .shadow(radius: 3)
             HStack() {
                 VStack {

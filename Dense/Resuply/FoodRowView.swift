@@ -21,7 +21,7 @@ struct FoodRowView: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
-            Color(.white)
+            Color(UIColor.systemBackground)
                 .cornerRadius(10)
                 .shadow(radius: 3)
             VStack(alignment: .leading) {
