@@ -11,6 +11,14 @@ import SwiftUI
 struct FoodRowView: View {
     var food: FoodItem
     
+    let formatter : NumberFormatter = {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = 1
+        
+        return numberFormatter
+    }()
+    
     var body: some View {
         ZStack(alignment: .leading) {
             Color(.white)
@@ -18,7 +26,7 @@ struct FoodRowView: View {
                 .shadow(radius: 3)
             VStack(alignment: .leading) {
                 Text(food.name)
-                Text("\(food.calories) Calories")
+                Text("\(formatter.string(from: food.calories) ?? "") Calories")
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         }

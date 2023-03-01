@@ -16,7 +16,7 @@ struct ResupplyView: View {
     
     var body: some View {
         VStack {
-            ResupplySummaryView()
+            ResupplySummaryView(food: food)
             List {
                 ForEach(food, id: \.name) { food in
                     FoodRowView(food: food)
