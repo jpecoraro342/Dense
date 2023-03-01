@@ -1,5 +1,5 @@
 //
-//  FoodList.swift
+//  ResupplySummaryView.swift
 //  Dense
 //
 //  Created by Joseph Pecoraro on 2/28/23.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct FoodListView: View {
+struct ResupplySummaryView: View {
     var body: some View {
-        Text("Food List")
+        Text("TODO: Resupply Summary")
     }
 }
 
-struct FoodListView_Previews: PreviewProvider {
+struct ResupplySummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        FoodListView()
+        ResupplySummaryView()
     }
 }

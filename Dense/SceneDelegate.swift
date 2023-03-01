@@ -11,7 +11,7 @@ import SwiftUI
 
 class SceneDelegate: NSObject, UISceneDelegate {
     var window: UIWindow?
-    let useSwiftUI = false
+    let useSwiftUI = true
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
@@ -25,7 +25,7 @@ class SceneDelegate: NSObject, UISceneDelegate {
     
     func rootViewController() -> UIViewController? {
         if useSwiftUI {
-            return UIHostingController(rootView: FoodListView())
+            return UIHostingController(rootView: CoordinatorView())
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             return storyboard.instantiateInitialViewController()

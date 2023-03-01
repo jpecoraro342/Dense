@@ -67,23 +67,23 @@ class FoodListVC : UIViewController, UITableViewDataSource, UITableViewDelegate 
         let weight = foodCalculator.weight()
         let calories = foodCalculator.calories()
         
-        self.caloriesLabel.text = formatter.string(from: NSNumber(value: calories))
+        self.caloriesLabel.text = formatter.string(from: calories)
         self.weightLabel.text = getLabel(weight: weight)
-        self.calsPerOzLabel.text = formatter.string(from: NSNumber(value: calories/weight))
+        self.calsPerOzLabel.text = formatter.string(from: calories/weight)
         
-        self.calsPerDayTextField.text = formatter.string(from: NSNumber(value: caloriesPerDay))
-        self.daysOfFoodLabel.text = formatter.string(from: NSNumber(value: calories/caloriesPerDay))
+        self.calsPerDayTextField.text = formatter.string(from: caloriesPerDay)
+        self.daysOfFoodLabel.text = formatter.string(from: calories/caloriesPerDay)
     }
     
     func getLabel(weight: Double) -> String {
         if weight < 16 {
-            return "\(formatter.string(from: NSNumber(value: weight)) ?? "0")oz"
+            return "\(formatter.string(from: weight) ?? "0")oz"
         }
         
         let oz = weight.truncatingRemainder(dividingBy: 16)
         let lbs = (weight - oz)/16
         
-        return "\(formatter.string(from: NSNumber(value: lbs)) ?? "0")lbs \(formatter.string(from: NSNumber(value: oz)) ?? "0")oz"
+        return "\(formatter.string(from: lbs) ?? "0")lbs \(formatter.string(from: oz) ?? "0")oz"
     }
     
     @IBAction func textDidChange(_ sender: UITextField) {
@@ -172,8 +172,8 @@ class FoodListVC : UIViewController, UITableViewDataSource, UITableViewDelegate 
         
         let foodItem = food[indexPath.row]
         
-        cell.textLabel?.text = "\(foodItem.name) - \(formatter.string(from: NSNumber(value: foodItem.calories/foodItem.oz)) ?? "") Cals/Oz"
-        cell.detailTextLabel?.text = "Calories: \(formatter.string(from: NSNumber(value: foodItem.calories)) ?? "") Weight \(formatter.string(from: NSNumber(value: foodItem.oz)) ?? "")oz"
+        cell.textLabel?.text = "\(foodItem.name) - \(formatter.string(from: foodItem.calories/foodItem.oz) ?? "") Cals/Oz"
+        cell.detailTextLabel?.text = "Calories: \(formatter.string(from: foodItem.calories) ?? "") Weight \(formatter.string(from: foodItem.oz) ?? "")oz"
         
         return cell
     }

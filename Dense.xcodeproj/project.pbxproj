@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		15385A7429AE5B96008DA5A1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A7329AE5B96008DA5A1 /* SceneDelegate.swift */; };
-		15385A7829AE6100008DA5A1 /* FoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A7729AE6100008DA5A1 /* FoodListView.swift */; };
+		15385A7829AE6100008DA5A1 /* ResupplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A7729AE6100008DA5A1 /* ResupplyView.swift */; };
 		15385A7F29AE6E9F008DA5A1 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A7E29AE6E9F008DA5A1 /* Food.swift */; };
 		15385A8129AE7131008DA5A1 /* FoodListDataAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8029AE7131008DA5A1 /* FoodListDataAccessor.swift */; };
 		15385A8329AE714C008DA5A1 /* FoodCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8229AE714C008DA5A1 /* FoodCalculator.swift */; };
 		15385A8529AE7254008DA5A1 /* PListFoodDataAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8429AE7254008DA5A1 /* PListFoodDataAccessor.swift */; };
+		15385A8729AE8894008DA5A1 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8629AE8894008DA5A1 /* CoordinatorView.swift */; };
+		15385A8929AE8B81008DA5A1 /* ResupplySummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8829AE8B81008DA5A1 /* ResupplySummaryView.swift */; };
+		15385A8B29AE8BC6008DA5A1 /* FoodRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8A29AE8BC6008DA5A1 /* FoodRowView.swift */; };
+		15385A8E29AEC76C008DA5A1 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8D29AEC76C008DA5A1 /* NumberFormatter.swift */; };
+		15385A9029AEC8B7008DA5A1 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8F29AEC8B7008DA5A1 /* AddFoodView.swift */; };
 		15D3EE6F230FD97900F97FA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D3EE6E230FD97900F97FA6 /* AppDelegate.swift */; };
 		15D3EE71230FD97900F97FA6 /* FoodListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D3EE70230FD97900F97FA6 /* FoodListVC.swift */; };
 		15D3EE76230FD97900F97FA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D3EE74230FD97900F97FA6 /* Main.storyboard */; };
@@ -22,11 +27,16 @@
 
 /* Begin PBXFileReference section */
 		15385A7329AE5B96008DA5A1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		15385A7729AE6100008DA5A1 /* FoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListView.swift; sourceTree = "<group>"; };
+		15385A7729AE6100008DA5A1 /* ResupplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplyView.swift; sourceTree = "<group>"; };
 		15385A7E29AE6E9F008DA5A1 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		15385A8029AE7131008DA5A1 /* FoodListDataAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListDataAccessor.swift; sourceTree = "<group>"; };
 		15385A8229AE714C008DA5A1 /* FoodCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCalculator.swift; sourceTree = "<group>"; };
 		15385A8429AE7254008DA5A1 /* PListFoodDataAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListFoodDataAccessor.swift; sourceTree = "<group>"; };
+		15385A8629AE8894008DA5A1 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
+		15385A8829AE8B81008DA5A1 /* ResupplySummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplySummaryView.swift; sourceTree = "<group>"; };
+		15385A8A29AE8BC6008DA5A1 /* FoodRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRowView.swift; sourceTree = "<group>"; };
+		15385A8D29AEC76C008DA5A1 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		15385A8F29AEC8B7008DA5A1 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
 		15D3EE6B230FD97900F97FA6 /* Dense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D3EE6E230FD97900F97FA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15D3EE70230FD97900F97FA6 /* FoodListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListVC.swift; sourceTree = "<group>"; };
@@ -50,7 +60,10 @@
 		15385A7529AE60C8008DA5A1 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				15385A7729AE6100008DA5A1 /* FoodListView.swift */,
+				15385A7729AE6100008DA5A1 /* ResupplyView.swift */,
+				15385A8829AE8B81008DA5A1 /* ResupplySummaryView.swift */,
+				15385A8A29AE8BC6008DA5A1 /* FoodRowView.swift */,
+				15385A8F29AEC8B7008DA5A1 /* AddFoodView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -66,6 +79,7 @@
 		15385A7929AE62B0008DA5A1 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				15385A8629AE8894008DA5A1 /* CoordinatorView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -85,6 +99,14 @@
 				15385A8429AE7254008DA5A1 /* PListFoodDataAccessor.swift */,
 			);
 			path = DataAccessors;
+			sourceTree = "<group>";
+		};
+		15385A8C29AEC75F008DA5A1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				15385A8D29AEC76C008DA5A1 /* NumberFormatter.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		15D3EE62230FD97900F97FA6 = {
@@ -107,11 +129,12 @@
 			isa = PBXGroup;
 			children = (
 				15385A8229AE714C008DA5A1 /* FoodCalculator.swift */,
+				15385A8C29AEC75F008DA5A1 /* Extensions */,
 				15385A7D29AE6E70008DA5A1 /* DataAccessors */,
 				15385A7C29AE6E63008DA5A1 /* Models */,
 				15385A7929AE62B0008DA5A1 /* Navigation */,
-				15385A7629AE60D1008DA5A1 /* UIKit */,
 				15385A7529AE60C8008DA5A1 /* SwiftUI */,
+				15385A7629AE60D1008DA5A1 /* UIKit */,
 				15D3EE6E230FD97900F97FA6 /* AppDelegate.swift */,
 				15385A7329AE5B96008DA5A1 /* SceneDelegate.swift */,
 				15D3EE74230FD97900F97FA6 /* Main.storyboard */,
@@ -194,12 +217,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				15D3EE6F230FD97900F97FA6 /* AppDelegate.swift in Sources */,
+				15385A8729AE8894008DA5A1 /* CoordinatorView.swift in Sources */,
+				15385A9029AEC8B7008DA5A1 /* AddFoodView.swift in Sources */,
 				15385A8529AE7254008DA5A1 /* PListFoodDataAccessor.swift in Sources */,
-				15385A7829AE6100008DA5A1 /* FoodListView.swift in Sources */,
+				15385A7829AE6100008DA5A1 /* ResupplyView.swift in Sources */,
+				15385A8E29AEC76C008DA5A1 /* NumberFormatter.swift in Sources */,
 				15385A7F29AE6E9F008DA5A1 /* Food.swift in Sources */,
 				15D3EE71230FD97900F97FA6 /* FoodListVC.swift in Sources */,
 				15385A8129AE7131008DA5A1 /* FoodListDataAccessor.swift in Sources */,
+				15385A8929AE8B81008DA5A1 /* ResupplySummaryView.swift in Sources */,
 				15385A8329AE714C008DA5A1 /* FoodCalculator.swift in Sources */,
+				15385A8B29AE8BC6008DA5A1 /* FoodRowView.swift in Sources */,
 				15385A7429AE5B96008DA5A1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
