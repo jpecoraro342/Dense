@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PListFoodDataAccessor {
+class UserDefaultsFoodDataAccessor {
     var initialized = false
     var food : [FoodItem] = []
     
@@ -17,7 +17,7 @@ class PListFoodDataAccessor {
     }
 }
 
-extension PListFoodDataAccessor : FoodListDataAccessor {
+extension UserDefaultsFoodDataAccessor : FoodListDataAccessor {
     
     func food() async -> [FoodItem] {
         if initialized {

@@ -24,7 +24,7 @@ class FoodListVC : UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     var food : [FoodItem] = []
     
-    var dataAccessor : FoodListDataAccessor = PListFoodDataAccessor()
+    var dataAccessor : FoodListDataAccessor = UserDefaultsFoodDataAccessor()
 
     override func viewDidLoad() {
         super.viewDidLoad()
