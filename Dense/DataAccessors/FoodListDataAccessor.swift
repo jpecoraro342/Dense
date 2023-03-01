@@ -8,8 +8,6 @@
 
 import Foundation
 
-let dataAccessor : FoodListDataAccessor = PListFoodDataAccessor()
-
 protocol FoodListDataAccessor {
     func food() async -> [FoodItem]
     func addFood(food: FoodItem) -> [FoodItem]

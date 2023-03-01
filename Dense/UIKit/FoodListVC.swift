@@ -24,6 +24,8 @@ class FoodListVC : UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     var food : [FoodItem] = []
     
+    var dataAccessor : FoodListDataAccessor = PListFoodDataAccessor()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,7 +101,7 @@ class FoodListVC : UIViewController, UITableViewDataSource, UITableViewDelegate 
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction) in }
         
         let clear = UIAlertAction(title: "Clear All", style: .destructive) { (action:UIAlertAction) in
-            self.food = dataAccessor.clearFood()
+            self.food = self.dataAccessor.clearFood()
             self.commitChange()
         }
         

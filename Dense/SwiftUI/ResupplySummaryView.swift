@@ -10,7 +10,27 @@ import SwiftUI
 
 struct ResupplySummaryView: View {
     var body: some View {
-        Text("TODO: Resupply Summary")
+        ZStack(alignment: .leading) {
+            Color(.white)
+//                .shadow(radius: 3)
+            HStack() {
+                VStack {
+                    Text("Total Calories")
+                }
+                Spacer()
+                VStack {
+                    Text("Total Weight")
+                }
+                Spacer()
+                VStack {
+                    Text("Calories/Oz")
+                }
+            }
+            .padding()
+//            .overlay(Divider(), alignment: .top)
+            .overlay(Divider(), alignment: .bottom)
+        }
+        .fixedSize(horizontal: false, vertical: true)
     }
 }
 

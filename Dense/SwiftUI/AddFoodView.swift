@@ -9,15 +9,21 @@
 import SwiftUI
 
 struct AddFoodView: View {
+    @Environment(\.dismiss) var dismiss
+    
     @State var name = ""
     @State var caloriesPerServing = ""
     @State var numberOfServings = ""
     @State var servingSizeG = ""
     @State var netWtOz = ""
     
+    var action: (FoodItem?) -> Void
+    
     var body: some View {
         VStack {
-            Text("Add Food")
+            Text("New Food")
+                .fontWeight(.semibold)
+                .padding()
             
             TextField("Name", text: $name)
                 .textFieldStyle(.roundedBorder)
@@ -34,7 +40,27 @@ struct AddFoodView: View {
                 .keyboardType(.decimalPad)
                 .textFieldStyle(.roundedBorder)
             
-            Text("Must include either net wt (oz), or serving size (g)")
+            HStack(alignment: .center, spacing: 20) {
+                Button("Cancel") {
+                    dismiss()
+                }
+                .buttonStyle(.bordered)
+                Button("Add Food") {
+                    let totalCalories = (Double(caloriesPerServing) ?? 0) * (Double(numberOfServings) ?? 1)
+                    let newFood = FoodItem(
+                        name: name,
+                        calories: totalCalories,
+                        oz: Double(netWtOz) ?? 0)
+                    
+                    action(newFood)
+                    dismiss()
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .padding()
+            
+            Text("Note: Must include either net wt (oz), or serving size (g) to calculate calories/oz")
+                .multilineTextAlignment(.center)
         }
         .padding(40)
     }
@@ -42,6 +68,8 @@ struct AddFoodView: View {
 
 struct AddFoodView_Previews: PreviewProvider {
     static var previews: some View {
-        AddFoodView()
+        AddFoodView() { food in
+        }
     }
 }
+

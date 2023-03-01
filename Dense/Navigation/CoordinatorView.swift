@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct CoordinatorView: View {
-    @State var initialView = ResupplyView()
+    @State var initialView = ResupplyView(dataAccessor: PListFoodDataAccessor())
     
     var body: some View {
         NavigationView {
