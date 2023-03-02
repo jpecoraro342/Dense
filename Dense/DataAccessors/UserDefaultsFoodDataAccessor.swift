@@ -13,7 +13,13 @@ class UserDefaultsFoodDataAccessor {
     var food : [FoodItem] = []
     
     func saveChanges() {
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(self.food), forKey: "foodList")
+        let clock = ContinuousClock()
+
+        var result = clock.measure() {
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(self.food), forKey: "foodList")
+        }
+        
+        print(result.formatted(.units(allowed: [.milliseconds], width: .wide)))
     }
 }
 
@@ -24,11 +30,17 @@ extension UserDefaultsFoodDataAccessor : FoodListDataAccessor {
             return food
         }
         
-        if let data = UserDefaults.standard.value(forKey:"foodList") as? Data {
-            food = (try? PropertyListDecoder().decode(Array<FoodItem>.self, from: data)) ?? []
-        } else {
-            food = []
+        let clock = ContinuousClock()
+
+        var result = clock.measure() {
+            if let data = UserDefaults.standard.value(forKey:"foodList") as? Data {
+                food = (try? PropertyListDecoder().decode(Array<FoodItem>.self, from: data)) ?? []
+            } else {
+                food = []
+            }
         }
+        
+        print(result.formatted(.units(allowed: [.milliseconds], width: .wide)))
         
         return food
     }

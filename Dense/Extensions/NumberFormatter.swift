@@ -9,7 +9,7 @@
 import Foundation
 
 extension NumberFormatter {
-    func string(from: Double) -> String? {
+    func string(_ from: Double) -> String? {
         return self.string(from: NSNumber(value: from))
     }
 }

@@ -69,23 +69,23 @@ class FoodListVC : UIViewController, UITableViewDataSource, UITableViewDelegate 
         let weight = foodCalculator.weight()
         let calories = foodCalculator.calories()
         
-        self.caloriesLabel.text = formatter.string(from: calories)
+        self.caloriesLabel.text = formatter.string(calories)
         self.weightLabel.text = getLabel(weight: weight)
-        self.calsPerOzLabel.text = formatter.string(from: calories/weight)
+        self.calsPerOzLabel.text = formatter.string(calories/weight)
         
-        self.calsPerDayTextField.text = formatter.string(from: caloriesPerDay)
-        self.daysOfFoodLabel.text = formatter.string(from: calories/caloriesPerDay)
+        self.calsPerDayTextField.text = formatter.string(caloriesPerDay)
+        self.daysOfFoodLabel.text = formatter.string(calories/caloriesPerDay)
     }
     
     func getLabel(weight: Double) -> String {
         if weight < 16 {
-            return "\(formatter.string(from: weight) ?? "0")oz"
+            return "\(formatter.string(weight) ?? "0")oz"
         }
         
         let oz = weight.truncatingRemainder(dividingBy: 16)
         let lbs = (weight - oz)/16
         
-        return "\(formatter.string(from: lbs) ?? "0")lbs \(formatter.string(from: oz) ?? "0")oz"
+        return "\(formatter.string(lbs) ?? "0")lbs \(formatter.string(oz) ?? "0")oz"
     }
     
     @IBAction func textDidChange(_ sender: UITextField) {
@@ -174,8 +174,8 @@ class FoodListVC : UIViewController, UITableViewDataSource, UITableViewDelegate 
         
         let foodItem = food[indexPath.row]
         
-        cell.textLabel?.text = "\(foodItem.name) - \(formatter.string(from: foodItem.calories/foodItem.oz) ?? "") Cals/Oz"
-        cell.detailTextLabel?.text = "Calories: \(formatter.string(from: foodItem.calories) ?? "") Weight \(formatter.string(from: foodItem.oz) ?? "")oz"
+        cell.textLabel?.text = "\(foodItem.name) - \(formatter.string(foodItem.calories/foodItem.oz) ?? "") Cals/Oz"
+        cell.detailTextLabel?.text = "Calories: \(formatter.string(foodItem.calories) ?? "") Weight \(formatter.string(foodItem.oz) ?? "")oz"
         
         return cell
     }

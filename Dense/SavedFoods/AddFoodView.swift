@@ -20,16 +20,30 @@ struct AddFoodView: View {
     var action: (FoodItem?) -> Void
     
     var body: some View {
-        ScrollView {
-            Text("Add Food")
-                .fontWeight(.semibold)
-                .padding()
-            
-            BarcodeButtonPrompt { barcode in
-                print(barcode)
+        GeometryReader { geometry in
+            ScrollView {
+                BarcodeButtonPrompt { barcode in
+                    print(barcode)
+                }
+                .padding(.top)
+                
+//                ProgressView()
+//                    .padding(.bottom)
+                
+                inputFields
+                
+                Text("If barcode data is incomplete or incorrect, you can help update it for everyone at [Open Food Facts](https://world.openfoodfacts.org/help-complete-products) or by using the [Open Food Facts App](https://apps.apple.com/us/app/open-food-facts-product-scan/id588797948)")
             }
-
-            
+            .padding()
+        }
+        .ignoresSafeArea(edges: .bottom)
+        .onTapGesture {
+            dismissKeyboard()
+        }
+    }
+    
+    var inputFields: some View {
+        VStack {
             TextField("Name", text: $name)
                 .textFieldStyle(.roundedBorder)
             TextField("Calories Per Serving", text: $caloriesPerServing)
@@ -38,12 +52,15 @@ struct AddFoodView: View {
             TextField("Number of Servings", text: $numberOfServings)
                 .keyboardType(.decimalPad)
                 .textFieldStyle(.roundedBorder)
-            TextField("Serving Size (g)", text: $servingSizeG)
-                .keyboardType(.decimalPad)
-                .textFieldStyle(.roundedBorder)
-            TextField("Net Wt (oz)", text: $netWtOz)
-                .keyboardType(.decimalPad)
-                .textFieldStyle(.roundedBorder)
+            HStack {
+                TextField("Serving Size (g)", text: $servingSizeG)
+                    .keyboardType(.decimalPad)
+                    .textFieldStyle(.roundedBorder)
+                Text("or")
+                TextField("Net Wt (g)", text: $netWtOz)
+                    .keyboardType(.decimalPad)
+                    .textFieldStyle(.roundedBorder)
+            }
             
             HStack(alignment: .center, spacing: 20) {
                 Button("Cancel") {
@@ -63,11 +80,7 @@ struct AddFoodView: View {
                 .buttonStyle(.borderedProminent)
             }
             .padding()
-            
-            Text("Note: Must include either net wt (oz), or serving size (g) to calculate calories/oz")
-                .multilineTextAlignment(.center)
         }
-        .padding(40)
     }
 }
 

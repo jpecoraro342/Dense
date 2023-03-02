@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1536E7AF29B06D1A00010988 /* JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536E7AE29B06D1A00010988 /* JSONEncoder.swift */; };
+		1536E7B129B06EC100010988 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536E7B029B06EC100010988 /* JSONDecoder.swift */; };
 		15385A7429AE5B96008DA5A1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A7329AE5B96008DA5A1 /* SceneDelegate.swift */; };
 		15385A7829AE6100008DA5A1 /* ResupplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A7729AE6100008DA5A1 /* ResupplyView.swift */; };
 		15385A7F29AE6E9F008DA5A1 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A7E29AE6E9F008DA5A1 /* Food.swift */; };
@@ -21,6 +23,7 @@
 		15385A9229AEFE53008DA5A1 /* DummyFoodDataAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A9129AEFE53008DA5A1 /* DummyFoodDataAccessor.swift */; };
 		15385A9529AF8E2C008DA5A1 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A9429AF8E2C008DA5A1 /* BarcodeScannerView.swift */; };
 		15385A9829AFA66E008DA5A1 /* BarcodeButtonPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A9729AFA66E008DA5A1 /* BarcodeButtonPrompt.swift */; };
+		15385A9A29AFEB15008DA5A1 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A9929AFEB15008DA5A1 /* View.swift */; };
 		15D3EE6F230FD97900F97FA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D3EE6E230FD97900F97FA6 /* AppDelegate.swift */; };
 		15D3EE71230FD97900F97FA6 /* FoodListVC_Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D3EE70230FD97900F97FA6 /* FoodListVC_Deprecated.swift */; };
 		15D3EE76230FD97900F97FA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D3EE74230FD97900F97FA6 /* Main.storyboard */; };
@@ -29,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1536E7AE29B06D1A00010988 /* JSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncoder.swift; sourceTree = "<group>"; };
+		1536E7B029B06EC100010988 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
 		15385A7329AE5B96008DA5A1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		15385A7729AE6100008DA5A1 /* ResupplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplyView.swift; sourceTree = "<group>"; };
 		15385A7E29AE6E9F008DA5A1 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
@@ -43,6 +48,7 @@
 		15385A9129AEFE53008DA5A1 /* DummyFoodDataAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyFoodDataAccessor.swift; sourceTree = "<group>"; };
 		15385A9429AF8E2C008DA5A1 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
 		15385A9729AFA66E008DA5A1 /* BarcodeButtonPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeButtonPrompt.swift; sourceTree = "<group>"; };
+		15385A9929AFEB15008DA5A1 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		15D3EE6B230FD97900F97FA6 /* Dense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D3EE6E230FD97900F97FA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15D3EE70230FD97900F97FA6 /* FoodListVC_Deprecated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListVC_Deprecated.swift; sourceTree = "<group>"; };
@@ -97,6 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				15385A8D29AEC76C008DA5A1 /* NumberFormatter.swift */,
+				15385A9929AFEB15008DA5A1 /* View.swift */,
+				1536E7AE29B06D1A00010988 /* JSONEncoder.swift */,
+				1536E7B029B06EC100010988 /* JSONDecoder.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -229,6 +238,9 @@
 				15385A8729AE8894008DA5A1 /* CoordinatorView.swift in Sources */,
 				15385A9829AFA66E008DA5A1 /* BarcodeButtonPrompt.swift in Sources */,
 				15385A9029AEC8B7008DA5A1 /* AddFoodView.swift in Sources */,
+				1536E7AF29B06D1A00010988 /* JSONEncoder.swift in Sources */,
+				15385A9A29AFEB15008DA5A1 /* View.swift in Sources */,
+				1536E7B129B06EC100010988 /* JSONDecoder.swift in Sources */,
 				15385A9229AEFE53008DA5A1 /* DummyFoodDataAccessor.swift in Sources */,
 				15385A8529AE7254008DA5A1 /* UserDefaultsFoodDataAccessor.swift in Sources */,
 				15385A7829AE6100008DA5A1 /* ResupplyView.swift in Sources */,

@@ -26,7 +26,7 @@ struct FoodRowView: View {
                 .shadow(radius: 3)
             VStack(alignment: .leading) {
                 Text(food.name)
-                Text("\(formatter.string(from: food.calories) ?? "") Calories")
+                Text("\(formatter.string(food.calories) ?? "") Calories")
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         }
