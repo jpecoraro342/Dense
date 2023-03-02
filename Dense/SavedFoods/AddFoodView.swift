@@ -46,20 +46,25 @@ struct AddFoodView: View {
         VStack {
             TextField("Name", text: $name)
                 .textFieldStyle(.roundedBorder)
+                .onTapGesture {/* capture tap to prevent keyboard dismiss */}
             TextField("Calories Per Serving", text: $caloriesPerServing)
                 .keyboardType(.decimalPad)
                 .textFieldStyle(.roundedBorder)
+                .onTapGesture {/* capture tap to prevent keyboard dismiss */}
             TextField("Number of Servings", text: $numberOfServings)
                 .keyboardType(.decimalPad)
                 .textFieldStyle(.roundedBorder)
+                .onTapGesture {/* capture tap to prevent keyboard dismiss */}
             HStack {
                 TextField("Serving Size (g)", text: $servingSizeG)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(.roundedBorder)
+                    .onTapGesture {/* capture tap to prevent keyboard dismiss */}
                 Text("or")
                 TextField("Net Wt (g)", text: $netWtOz)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(.roundedBorder)
+                    .onTapGesture {/* capture tap to prevent keyboard dismiss */}
             }
             
             HStack(alignment: .center, spacing: 20) {
