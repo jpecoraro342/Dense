@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct FoodRowView: View {
-    var food: FoodItem
+    var food: FoodViewModel
     
     let formatter : NumberFormatter = {
         let numberFormatter = NumberFormatter()
@@ -26,7 +26,7 @@ struct FoodRowView: View {
                 .shadow(radius: 3)
             VStack(alignment: .leading) {
                 Text(food.name)
-                Text("\(formatter.string(food.calories) ?? "") Calories")
+                Text("\(formatter.string(food.totalCalories) ?? "") Calories")
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         }
@@ -39,7 +39,14 @@ struct FoodRowView: View {
 struct FoodRowView_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            FoodRowView(food: FoodItem(name: "Fritos", calories: 1000, oz: 10))
+            FoodRowView(food: FoodViewModel(
+                productId: UUID().uuidString,
+                name: "Fritos",
+                netWeightG: 250,
+                servingSizeG: 25,
+                caloriesPerServing: 140,
+                quantity: 1,
+                missingInfo: false))
         }
     }
 }

@@ -9,17 +9,19 @@
 import Foundation
 
 class FoodCalculator : NSObject {
-    let food : [FoodItem]
+    let food : [FoodViewModel]
     
-    init(foodList: [FoodItem]) {
+    static let gramsToOunces = 0.035274
+    
+    init(foodList: [FoodViewModel]) {
         self.food = foodList
     }
     
     func weight() -> Double {
-        return food.reduce(0, { $0 + $1.oz})
+        return food.reduce(0, { $0 + $1.netWeightG}) * Self.gramsToOunces
     }
     
     func calories() -> Double {
-        return food.reduce(0, { $0 + $1.calories })
+        return food.reduce(0, { $0 + $1.totalCalories })
     }
 }

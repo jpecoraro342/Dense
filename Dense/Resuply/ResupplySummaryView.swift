@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ResupplySummaryView: View {
-    var food : [FoodItem]
+    @State var resupply : ResupplyViewModel
     
     let formatter : NumberFormatter = {
         let numberFormatter = NumberFormatter()
@@ -26,17 +26,17 @@ struct ResupplySummaryView: View {
             HStack() {
                 VStack {
                     Text("Total Calories")
-                    Text(formatter.string((FoodCalculator(foodList: food).calories())) ?? "")
+                    Text(formatter.string((FoodCalculator(foodList: resupply.foods).calories())) ?? "")
                 }
                 Spacer()
                 VStack {
                     Text("Total Weight")
-                    Text(weightLabel(FoodCalculator(foodList: food).weight()))
+                    Text(weightLabel(FoodCalculator(foodList: resupply.foods).weight()))
                 }
                 Spacer()
                 VStack {
                     Text("Calories/Oz")
-                    Text(formatter.string((FoodCalculator(foodList: food).calories()/FoodCalculator(foodList: food).weight())) ?? "")
+                    Text(formatter.string((FoodCalculator(foodList: resupply.foods).calories()/FoodCalculator(foodList: resupply.foods).weight())) ?? "")
                 }
             }
             .padding()
@@ -60,6 +60,9 @@ struct ResupplySummaryView: View {
 
 struct ResupplySummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        ResupplySummaryView(food: DummyFoodDataAccessor().food)
+        ResupplySummaryView(
+            resupply: ResupplyViewModel(
+                resupply: DummyDataStore().resupplies.first!,
+                products: DummyDataStore().products))
     }
 }

@@ -11,19 +11,31 @@ import SwiftUI
 struct AddFoodView: View {
     @Environment(\.dismiss) var dismiss
     
+    let dataStore : ProductDataStore
+    
     @State var name = ""
     @State var caloriesPerServing = ""
     @State var numberOfServings = ""
     @State var servingSizeG = ""
-    @State var netWtOz = ""
+    @State var netWtG = ""
     
-    var action: (FoodItem?) -> Void
+    @State var product: Product?
+    
+    var action: (Product?) -> Void
     
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
                 BarcodeButtonPrompt { barcode in
-                    print(barcode)
+                    Task {
+                        if let product = await dataStore.getProduct(barcode: barcode) {
+                            self.product = product
+                            updateStateWithProduct()
+                        } else {
+                            // TODO:
+                            print("unable to retrieve food from barcode")
+                        }
+                    }
                 }
                 .padding(.top)
                 
@@ -61,7 +73,7 @@ struct AddFoodView: View {
                     .textFieldStyle(.roundedBorder)
                     .onTapGesture {/* capture tap to prevent keyboard dismiss */}
                 Text("or")
-                TextField("Net Wt (g)", text: $netWtOz)
+                TextField("Net Wt (g)", text: $netWtG)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(.roundedBorder)
                     .onTapGesture {/* capture tap to prevent keyboard dismiss */}
@@ -73,26 +85,58 @@ struct AddFoodView: View {
                 }
                 .buttonStyle(.bordered)
                 Button("Add Food") {
-                    let totalCalories = (Double(caloriesPerServing) ?? 0) * (Double(numberOfServings) ?? 1)
-                    let newFood = FoodItem(
-                        name: name,
-                        calories: totalCalories,
-                        oz: Double(netWtOz) ?? 0)
-                    
-                    action(newFood)
-                    dismiss()
+                    Task {
+                        await addFood()
+                    }
                 }
                 .buttonStyle(.borderedProminent)
             }
             .padding()
         }
     }
-}
-
-struct AddFoodView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddFoodView() { food in
+    
+    func addFood() async {
+        if var product = product {
+            product.updateWith(name: name,
+                               caloriesPerServing: caloriesPerServing,
+                               numberOfServings: numberOfServings,
+                               servingSizeG: servingSizeG,
+                               netWtG: netWtG)
+            await dataStore.putProduct(product)
+        } else {
+            let product = Product(name: name,
+                                  caloriesPerServing: caloriesPerServing,
+                                  numberOfServings: numberOfServings,
+                                  servingSizeG: servingSizeG,
+                                  netWtG: netWtG)
+            await dataStore.putProduct(product)
+        }
+        
+        dismiss()
+    }
+    
+    func updateStateWithProduct() {
+        name = product?.productName ?? name
+        // TODO: Use a view model and format appropriately
+        if let calories = product?.nutriments.energyKcalServing {
+            caloriesPerServing = "\(calories)"
+        }
+        
+        guard let netWtG = product?.productQuantity else { return }
+        self.netWtG = netWtG
+        
+        guard let servingSizeG = product?.servingQuantity else { return }
+        
+        let numberOfServings = (Double(netWtG) ?? 0) / (Double(servingSizeG) ?? 0)
+        if numberOfServings != 0 {
+            self.numberOfServings = "\(numberOfServings)"
         }
     }
 }
 
+struct AddFoodView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddFoodView(dataStore: DummyDataStore()) { food in
+        }
+    }
+}

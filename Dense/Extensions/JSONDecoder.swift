@@ -9,7 +9,7 @@
 import Foundation
 
 extension JSONDecoder {
-    func readFromFile<T: Decodable>(decodableType: T, filePath: String) -> Decodable? {
+    func readFromFile<T: Decodable>(filePath: String) -> T? {
         if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             do {
                 let url = documentsDirectory.appendingPathComponent(filePath)
