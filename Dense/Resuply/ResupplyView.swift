@@ -13,6 +13,8 @@ struct ResupplyView: View {
     @State var resupplyId : String?
     @State var resupply : ResupplyViewModel
     
+    @State private var showingResetConfirmation = false
+    
     let dataStore : ResupplyDataStore & ProductDataStore
     
     var body: some View {
@@ -40,11 +42,19 @@ struct ResupplyView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button("Reset") {
-                    Task {
-                        if let resupply = await dataStore.resetResupply(id: resupply.id) {
-                            self.resupply = ResupplyViewModel(resupply: resupply, products: await dataStore.getProducts())
+                    showingResetConfirmation = true
+                }
+                .alert("Are you sure you want to reset?", isPresented: $showingResetConfirmation) {
+                    Button("Reset", role: .destructive) {
+                        Task {
+                            if let resupply = await dataStore.resetResupply(id: resupply.id) {
+                                self.resupply = ResupplyViewModel(resupply: resupply, products: await dataStore.getProducts())
+                            }
                         }
                     }
+                    Button("Cancel", role: .cancel) { }
+                } message: {
+                    Text("This will clear all foods added to this resupply")
                 }
             }
             ToolbarItem(placement: .primaryAction) {
