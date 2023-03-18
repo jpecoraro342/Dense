@@ -30,14 +30,9 @@ struct ResupplyItemView: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
-            Color(UIColor.systemBackground)
+            Color(light: Color(UIColor.tertiarySystemBackground),
+                  dark: Color(UIColor.secondarySystemBackground))
                 .cornerRadius(10)
-                .shadow(color: Color(
-                    light: Color(.sRGBLinear, white: 0, opacity: 0.25),
-                    dark: Color(.sRGBLinear, white: 1, opacity: 0.4)
-                ), radius: 3)
-//                .shadow(radius: 3)
-            HStack {
                 VStack(alignment: .leading) {
                     HStack {
                         Text(food.name)
@@ -68,7 +63,6 @@ struct ResupplyItemView: View {
                         Text("\(formatter.string(food.totalCalories/(food.netWeightG*FoodCalculator.gramsToOunces)) ?? "") Cal/Oz")
                     }
                 }
-            }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         }
         .listRowSeparator(.hidden)

@@ -112,8 +112,8 @@
 		15385A7529AE60C8008DA5A1 /* Resuply */ = {
 			isa = PBXGroup;
 			children = (
-				15385A8829AE8B81008DA5A1 /* ResupplySummaryView.swift */,
 				15385A7729AE6100008DA5A1 /* ResupplyView.swift */,
+				15385A8829AE8B81008DA5A1 /* ResupplySummaryView.swift */,
 				15385A8A29AE8BC6008DA5A1 /* ResupplyItemView.swift */,
 				15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */,
 				15385A7E29AE6E9F008DA5A1 /* FoodViewModel.swift */,
