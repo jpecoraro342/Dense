@@ -18,10 +18,10 @@ class FoodCalculator : NSObject {
     }
     
     func weight() -> Double {
-        return food.reduce(0, { $0 + $1.netWeightG}) * Self.gramsToOunces
+        return food.reduce(0, { $0 + ($1.netWeightG * $1.quantity) }) * Self.gramsToOunces
     }
     
     func calories() -> Double {
-        return food.reduce(0, { $0 + $1.totalCalories })
+        return food.reduce(0, { $0 + ($1.totalCalories * $1.quantity) })
     }
 }

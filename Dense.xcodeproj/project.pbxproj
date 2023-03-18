@@ -24,7 +24,7 @@
 		15385A8329AE714C008DA5A1 /* FoodCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8229AE714C008DA5A1 /* FoodCalculator.swift */; };
 		15385A8729AE8894008DA5A1 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8629AE8894008DA5A1 /* CoordinatorView.swift */; };
 		15385A8929AE8B81008DA5A1 /* ResupplySummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8829AE8B81008DA5A1 /* ResupplySummaryView.swift */; };
-		15385A8B29AE8BC6008DA5A1 /* FoodRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8A29AE8BC6008DA5A1 /* FoodRowView.swift */; };
+		15385A8B29AE8BC6008DA5A1 /* ResupplyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8A29AE8BC6008DA5A1 /* ResupplyItemView.swift */; };
 		15385A8E29AEC76C008DA5A1 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8D29AEC76C008DA5A1 /* NumberFormatter.swift */; };
 		15385A9029AEC8B7008DA5A1 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A8F29AEC8B7008DA5A1 /* AddFoodView.swift */; };
 		15385A9529AF8E2C008DA5A1 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A9429AF8E2C008DA5A1 /* BarcodeScannerView.swift */; };
@@ -55,7 +55,7 @@
 		15385A8229AE714C008DA5A1 /* FoodCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCalculator.swift; sourceTree = "<group>"; };
 		15385A8629AE8894008DA5A1 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
 		15385A8829AE8B81008DA5A1 /* ResupplySummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplySummaryView.swift; sourceTree = "<group>"; };
-		15385A8A29AE8BC6008DA5A1 /* FoodRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRowView.swift; sourceTree = "<group>"; };
+		15385A8A29AE8BC6008DA5A1 /* ResupplyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplyItemView.swift; sourceTree = "<group>"; };
 		15385A8D29AEC76C008DA5A1 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		15385A8F29AEC8B7008DA5A1 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
 		15385A9429AF8E2C008DA5A1 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
@@ -110,13 +110,13 @@
 		15385A7529AE60C8008DA5A1 /* Resuply */ = {
 			isa = PBXGroup;
 			children = (
-				1536E7C029B1B32B00010988 /* Resupply.swift */,
+				15385A8829AE8B81008DA5A1 /* ResupplySummaryView.swift */,
+				15385A7729AE6100008DA5A1 /* ResupplyView.swift */,
+				15385A8A29AE8BC6008DA5A1 /* ResupplyItemView.swift */,
 				15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */,
 				15385A7E29AE6E9F008DA5A1 /* FoodViewModel.swift */,
+				1536E7C029B1B32B00010988 /* Resupply.swift */,
 				15385A8229AE714C008DA5A1 /* FoodCalculator.swift */,
-				15385A7729AE6100008DA5A1 /* ResupplyView.swift */,
-				15385A8829AE8B81008DA5A1 /* ResupplySummaryView.swift */,
-				15385A8A29AE8BC6008DA5A1 /* FoodRowView.swift */,
 			);
 			path = Resuply;
 			sourceTree = "<group>";
@@ -299,7 +299,7 @@
 				15385A8929AE8B81008DA5A1 /* ResupplySummaryView.swift in Sources */,
 				1536E7BB29B12BEB00010988 /* PaginatedProducts.swift in Sources */,
 				15385A8329AE714C008DA5A1 /* FoodCalculator.swift in Sources */,
-				15385A8B29AE8BC6008DA5A1 /* FoodRowView.swift in Sources */,
+				15385A8B29AE8BC6008DA5A1 /* ResupplyItemView.swift in Sources */,
 				15385A7429AE5B96008DA5A1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

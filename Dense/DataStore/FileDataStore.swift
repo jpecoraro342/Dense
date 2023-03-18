@@ -115,8 +115,10 @@ extension FileDataStore : ResupplyDataStore {
     }
     
     func resetResupply(id: String) async -> Resupply? {
-        if var resupply = await getResupply(id: id) {
+        if let index = await getResupplies().firstIndex(where: { $0.id == id }) {
+            var resupply = resupplies[index]
             resupply.items = []
+            resupplies[index] = resupply
             await saveResupplies()
             return resupply
         }

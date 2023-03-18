@@ -19,12 +19,20 @@ struct ResupplyView: View {
         VStack {
             ResupplySummaryView(resupply: $resupply)
             List {
-                ForEach(resupply.foods, id: \.name) { food in
-                    FoodRowView(food: food)
+                ForEach(resupply.foods, id: \.productId) { food in
+                    ResupplyItemView(food: food, quantityUpdated: { quantity in
+                        Task {
+                            var updatedFood = food
+                            updatedFood.quantity = quantity
+                            await dataStore.putItem(updatedFood.resupplyItem(), toResupply: resupply.id)
+                            await updateResupplyViewModel()
+                        }
+                    })
                 }
                 .onDelete { indexSet in Task { await delete(at:indexSet) } }
             }
             .listStyle(.plain)
+            .scrollDismissesKeyboard(.immediately)
             Button("Reset Resupply") {
                 Task {
                     if let resupply = await dataStore.resetResupply(id: resupply.id) {
@@ -59,6 +67,9 @@ struct ResupplyView: View {
         .toolbarBackground(.visible, for: .navigationBar)
         .task {
             await initResupply()
+        }
+        .onTapGesture {
+            dismissKeyboard()
         }
     }
     
