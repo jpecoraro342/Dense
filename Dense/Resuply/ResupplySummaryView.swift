@@ -31,7 +31,7 @@ struct ResupplySummaryView: View {
                 Spacer()
                 VStack {
                     Text("Total Weight")
-                    Text(weightLabel(FoodCalculator(foodList: resupply.foods).weight()))
+                    Text(formatter.lbsOz(FoodCalculator(foodList: resupply.foods).weight()))
                 }
                 Spacer()
                 VStack {
@@ -44,17 +44,6 @@ struct ResupplySummaryView: View {
             .overlay(Divider(), alignment: .bottom)
         }
         .fixedSize(horizontal: false, vertical: true)
-    }
-    
-    func weightLabel(_ weight: Double) -> String {
-        if weight < 16 {
-            return "\(formatter.string(weight) ?? "0")oz"
-        }
-        
-        let oz = weight.truncatingRemainder(dividingBy: 16)
-        let lbs = (weight - oz)/16
-        
-        return "\(formatter.string(lbs) ?? "0")lbs \(formatter.string(oz) ?? "0")oz"
     }
 }
 

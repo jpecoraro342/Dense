@@ -32,16 +32,23 @@ struct ResupplyItemView: View {
         ZStack(alignment: .leading) {
             Color(UIColor.systemBackground)
                 .cornerRadius(10)
-                .shadow(radius: 3)
+                .shadow(color: Color(
+                    light: Color(.sRGBLinear, white: 0, opacity: 0.25),
+                    dark: Color(.sRGBLinear, white: 1, opacity: 0.4)
+                ), radius: 3)
+//                .shadow(radius: 3)
             HStack {
                 VStack(alignment: .leading) {
                     HStack {
                         Text(food.name)
+                            .lineLimit(2)
                         Spacer()
                         Text("Quantity:")
                         TextField("0", text: $quantity)
                             .keyboardType(.decimalPad)
-                            .textFieldStyle(.automatic)
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
+                            .textFieldStyle(.roundedBorder)
+                            .multilineTextAlignment(.center)
                             .onTapGesture {/* capture tap to prevent keyboard dismiss */}
                             .fixedSize()
                             .onChange(of: quantity) {
@@ -51,11 +58,12 @@ struct ResupplyItemView: View {
                                 }
                             }
                     }
+                    Divider()
                     HStack {
                         // TODO: Use the calculator for these
                         Text("\(formatter.string(food.totalCalories*food.quantity) ?? "") Cal")
                         Spacer()
-                        Text("\(formatter.string(food.netWeightG*FoodCalculator.gramsToOunces*food.quantity) ?? "") Oz")
+                        Text(formatter.gramsToLbsOz(food.netWeightG*food.quantity))
                         Spacer()
                         Text("\(formatter.string(food.totalCalories/(food.netWeightG*FoodCalculator.gramsToOunces)) ?? "") Cal/Oz")
                     }
