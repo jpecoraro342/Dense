@@ -33,29 +33,32 @@ struct ResupplyView: View {
             }
             .listStyle(.plain)
             .scrollDismissesKeyboard(.immediately)
-            Button("Reset Resupply") {
-                Task {
-                    if let resupply = await dataStore.resetResupply(id: resupply.id) {
-                        self.resupply = ResupplyViewModel(resupply: resupply, products: await dataStore.getProducts())
-                    }
-                }
-            }
-            .padding()
         }
         .background(Color(UIColor.systemGroupedBackground))
         .navigationTitle("Resupply")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            Button("Add Food") {
-                showingAddFood = true
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button("Reset") {
+                    Task {
+                        if let resupply = await dataStore.resetResupply(id: resupply.id) {
+                            self.resupply = ResupplyViewModel(resupply: resupply, products: await dataStore.getProducts())
+                        }
+                    }
+                }
             }
-            .sheet(isPresented: $showingAddFood) {
-                AddFoodView(dataStore: dataStore) { product in
-                    if let product = product {
-                        let resupplyItem = ResupplyItem(productId: product.code, quantity: 1)
-                        Task {
-                            await dataStore.putItem(resupplyItem, toResupply: resupply.id)
-                            await updateResupplyViewModel()
+            ToolbarItem(placement: .primaryAction) {
+                Button("Add Food") {
+                    showingAddFood = true
+                }
+                .sheet(isPresented: $showingAddFood) {
+                    AddFoodView(dataStore: dataStore) { product in
+                        if let product = product {
+                            let resupplyItem = ResupplyItem(productId: product.code, quantity: 1)
+                            Task {
+                                await dataStore.putItem(resupplyItem, toResupply: resupply.id)
+                                await updateResupplyViewModel()
+                            }
                         }
                     }
                 }
