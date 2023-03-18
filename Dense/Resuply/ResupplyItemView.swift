@@ -33,18 +33,21 @@ struct ResupplyItemView: View {
             Color(light: Color(UIColor.tertiarySystemBackground),
                   dark: Color(UIColor.secondarySystemBackground))
                 .cornerRadius(10)
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 8) {
                     HStack {
                         Text(food.name)
-                            .lineLimit(2)
+                            .fontWeight(.semibold)
+                            .lineLimit(1)
                         Spacer()
                         Text("Quantity:")
+                            .padding(.trailing, 0)
                         TextField("0", text: $quantity)
                             .keyboardType(.decimalPad)
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
-                            .textFieldStyle(.roundedBorder)
+                            .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 10))
+//                            .overlay(
+//                                RoundedRectangle(cornerRadius: 5)
+//                                    .stroke(Color(UIColor.systemGray5)))
                             .multilineTextAlignment(.center)
-                            .onTapGesture {/* capture tap to prevent keyboard dismiss */}
                             .fixedSize()
                             .onChange(of: quantity) {
                                 if let quantity = Double($0) {
@@ -61,6 +64,7 @@ struct ResupplyItemView: View {
                         Text(formatter.gramsToLbsOz(food.netWeightG*food.quantity))
                         Spacer()
                         Text("\(formatter.string(food.totalCalories/(food.netWeightG*FoodCalculator.gramsToOunces)) ?? "") Cal/Oz")
+                            .padding(.trailing, 10)
                     }
                 }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
