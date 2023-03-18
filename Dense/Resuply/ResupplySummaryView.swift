@@ -22,7 +22,10 @@ struct ResupplySummaryView: View {
     var body: some View {
         ZStack(alignment: .leading) {
             Color(UIColor.systemBackground)
-//                .shadow(radius: 3)
+//                .shadow(color: Color(
+//                    light: Color(.sRGBLinear, white: 0, opacity: 0.25),
+//                    dark: Color(.sRGBLinear, white: 0.3, opacity: 0.4)
+//                ), radius: 2)
             HStack() {
                 VStack {
                     Text("Total Calories")
@@ -40,7 +43,6 @@ struct ResupplySummaryView: View {
                 }
             }
             .padding()
-//            .overlay(Divider(), alignment: .top)
             .overlay(Divider(), alignment: .bottom)
         }
         .fixedSize(horizontal: false, vertical: true)
