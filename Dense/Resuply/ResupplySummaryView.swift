@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ResupplySummaryView: View {
-    @State var resupply : ResupplyViewModel
+    @Binding var resupply : ResupplyViewModel
     
     let formatter : NumberFormatter = {
         let numberFormatter = NumberFormatter()
@@ -61,8 +61,8 @@ struct ResupplySummaryView: View {
 struct ResupplySummaryView_Previews: PreviewProvider {
     static var previews: some View {
         ResupplySummaryView(
-            resupply: ResupplyViewModel(
+            resupply: .constant(ResupplyViewModel(
                 resupply: DummyDataStore().resupplies.first!,
-                products: DummyDataStore().products))
+                products: DummyDataStore().products)))
     }
 }

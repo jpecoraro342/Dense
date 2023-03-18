@@ -17,7 +17,7 @@ struct ResupplyView: View {
     
     var body: some View {
         VStack {
-            ResupplySummaryView(resupply: resupply)
+            ResupplySummaryView(resupply: $resupply)
             List {
                 ForEach(resupply.foods, id: \.name) { food in
                     FoodRowView(food: food)
@@ -47,6 +47,7 @@ struct ResupplyView: View {
                         let resupplyItem = ResupplyItem(productId: product.code, quantity: 1)
                         Task {
                             await dataStore.putItem(resupplyItem, toResupply: resupply.id)
+                            await updateResupplyViewModel()
                         }
                     }
                 }

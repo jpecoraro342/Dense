@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FileDataStore {
+class FileDataStore : NSObject {
     private var productsInitialized = false
     private var products : [Product] = [] // products.json
     
@@ -124,22 +124,32 @@ extension FileDataStore : ResupplyDataStore {
         return nil
     }
     
-    func putItem(_ item: ResupplyItem, toResupply: String) async {
-        if var resupply = await getResupply(id: toResupply) {
+    func putItem(_ item: ResupplyItem, toResupply resupplyId: String) async {
+        if let index = await getResupplies().firstIndex(where: { $0.id == resupplyId }) {
+            var resupply = resupplies[index]
             resupply.put(item: item)
+            resupplies[index] = resupply
         } else {
-            let resupply = Resupply(date: Date(), id: toResupply, name: "", items: [item])
+            let resupply = Resupply(date: Date(), id: resupplyId, name: "", items: [item])
             resupplies.append(resupply)
         }
         
         await saveResupplies()
     }
     
-    func removeItem(_ item: ResupplyItem, fromResupply: String) async {
-        if var resupply = await getResupply(id: fromResupply) {
+    func removeItem(_ item: ResupplyItem, fromResupply resupplyId: String) async {
+        if let index = await getResupplies().firstIndex(where: { $0.id == resupplyId }) {
+            var resupply = resupplies[index]
             resupply.delete(item: item)
+            resupplies[index] = resupply
         }
         
         await saveResupplies()
+    }
+}
+
+extension FileDataStore {
+    override var description : String {
+        return ("Resupplies:\n\(resupplies)\nProducts:\n\(products)")
     }
 }

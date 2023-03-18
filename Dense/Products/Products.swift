@@ -12,7 +12,7 @@ struct Product {
     var code: String
     var productName: String
     /// Net Wt (g)
-    var productQuantity: String?
+    var productQuantity: String? // TODO: Decode from number or string
     /// Serving Size (g)
     var servingQuantity: String?
     var imageIngredientsUrl: URL?

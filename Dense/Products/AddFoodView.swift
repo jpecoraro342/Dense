@@ -103,6 +103,7 @@ struct AddFoodView: View {
                                servingSizeG: servingSizeG,
                                netWtG: netWtG)
             await dataStore.putProduct(product)
+            action(product)
         } else {
             let product = Product(name: name,
                                   caloriesPerServing: caloriesPerServing,
@@ -110,6 +111,7 @@ struct AddFoodView: View {
                                   servingSizeG: servingSizeG,
                                   netWtG: netWtG)
             await dataStore.putProduct(product)
+            action(product)
         }
         
         dismiss()
