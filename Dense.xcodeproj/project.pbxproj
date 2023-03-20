@@ -33,10 +33,23 @@
 		15A0D9A329B7A51E0089D8CF /* DummyDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A0D9A229B7A51E0089D8CF /* DummyDataStore.swift */; };
 		15D2A1DB29B92B960053F496 /* ResupplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */; };
 		15D2A1DD29C656CE0053F496 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1DC29C656CE0053F496 /* Color.swift */; };
+		15D2A1E529C888DD0053F496 /* DenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1E429C888DD0053F496 /* DenseTests.swift */; };
+		15D2A1EC29C8ABB50053F496 /* StringAdaptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1EB29C8ABB50053F496 /* StringAdaptable.swift */; };
+		15D2A1EF29C8C1950053F496 /* DoubleAdaptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1EE29C8C1950053F496 /* DoubleAdaptable.swift */; };
 		15D3EE6F230FD97900F97FA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D3EE6E230FD97900F97FA6 /* AppDelegate.swift */; };
 		15D3EE78230FD97B00F97FA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D3EE77230FD97B00F97FA6 /* Assets.xcassets */; };
 		15D3EE7B230FD97B00F97FA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D3EE79230FD97B00F97FA6 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		15D2A1E629C888DD0053F496 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15D3EE63230FD97900F97FA6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 15D3EE6A230FD97900F97FA6;
+			remoteInfo = Dense;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1536E7AE29B06D1A00010988 /* JSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncoder.swift; sourceTree = "<group>"; };
@@ -65,6 +78,10 @@
 		15A0D9A229B7A51E0089D8CF /* DummyDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataStore.swift; sourceTree = "<group>"; };
 		15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplyViewModel.swift; sourceTree = "<group>"; };
 		15D2A1DC29C656CE0053F496 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		15D2A1E229C888DD0053F496 /* DenseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DenseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15D2A1E429C888DD0053F496 /* DenseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DenseTests.swift; sourceTree = "<group>"; };
+		15D2A1EB29C8ABB50053F496 /* StringAdaptable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringAdaptable.swift; sourceTree = "<group>"; };
+		15D2A1EE29C8C1950053F496 /* DoubleAdaptable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleAdaptable.swift; sourceTree = "<group>"; };
 		15D3EE6B230FD97900F97FA6 /* Dense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D3EE6E230FD97900F97FA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15D3EE77230FD97B00F97FA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,6 +90,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		15D2A1DF29C888DD0053F496 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		15D3EE68230FD97900F97FA6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -174,10 +198,28 @@
 			path = Products;
 			sourceTree = "<group>";
 		};
+		15D2A1E329C888DD0053F496 /* DenseTests */ = {
+			isa = PBXGroup;
+			children = (
+				15D2A1E429C888DD0053F496 /* DenseTests.swift */,
+			);
+			path = DenseTests;
+			sourceTree = "<group>";
+		};
+		15D2A1ED29C8AECE0053F496 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				15D2A1EB29C8ABB50053F496 /* StringAdaptable.swift */,
+				15D2A1EE29C8C1950053F496 /* DoubleAdaptable.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		15D3EE62230FD97900F97FA6 = {
 			isa = PBXGroup;
 			children = (
 				15D3EE6D230FD97900F97FA6 /* Dense */,
+				15D2A1E329C888DD0053F496 /* DenseTests */,
 				15D3EE6C230FD97900F97FA6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -186,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				15D3EE6B230FD97900F97FA6 /* Dense.app */,
+				15D2A1E229C888DD0053F496 /* DenseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,6 +236,7 @@
 		15D3EE6D230FD97900F97FA6 /* Dense */ = {
 			isa = PBXGroup;
 			children = (
+				15D2A1ED29C8AECE0053F496 /* Utilities */,
 				1536E7B829B12B7D00010988 /* StartupDelegates */,
 				15385A8C29AEC75F008DA5A1 /* Extensions */,
 				1536E7C229B1BCE200010988 /* Networking */,
@@ -211,6 +255,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		15D2A1E129C888DD0053F496 /* DenseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15D2A1E829C888DD0053F496 /* Build configuration list for PBXNativeTarget "DenseTests" */;
+			buildPhases = (
+				15D2A1DE29C888DD0053F496 /* Sources */,
+				15D2A1DF29C888DD0053F496 /* Frameworks */,
+				15D2A1E029C888DD0053F496 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				15D2A1E729C888DD0053F496 /* PBXTargetDependency */,
+			);
+			name = DenseTests;
+			productName = DenseTests;
+			productReference = 15D2A1E229C888DD0053F496 /* DenseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		15D3EE6A230FD97900F97FA6 /* Dense */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15D3EE7F230FD97B00F97FA6 /* Build configuration list for PBXNativeTarget "Dense" */;
@@ -234,10 +296,14 @@
 		15D3EE63230FD97900F97FA6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Joseph Pecoraro";
 				TargetAttributes = {
+					15D2A1E129C888DD0053F496 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 15D3EE6A230FD97900F97FA6;
+					};
 					15D3EE6A230FD97900F97FA6 = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -257,11 +323,19 @@
 			projectRoot = "";
 			targets = (
 				15D3EE6A230FD97900F97FA6 /* Dense */,
+				15D2A1E129C888DD0053F496 /* DenseTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		15D2A1E029C888DD0053F496 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		15D3EE69230FD97900F97FA6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -274,6 +348,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		15D2A1DE29C888DD0053F496 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15D2A1E529C888DD0053F496 /* DenseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		15D3EE67230FD97900F97FA6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -282,6 +364,7 @@
 				1536E7B729B11C6C00010988 /* Duration.swift in Sources */,
 				1536E7B529B07D0000010988 /* Bundle.swift in Sources */,
 				15385A8729AE8894008DA5A1 /* CoordinatorView.swift in Sources */,
+				15D2A1EF29C8C1950053F496 /* DoubleAdaptable.swift in Sources */,
 				15385A9829AFA66E008DA5A1 /* BarcodeButtonPrompt.swift in Sources */,
 				15385A9029AEC8B7008DA5A1 /* AddFoodView.swift in Sources */,
 				1536E7BF29B1B30000010988 /* FileDataStore.swift in Sources */,
@@ -295,6 +378,7 @@
 				15D2A1DB29B92B960053F496 /* ResupplyViewModel.swift in Sources */,
 				15385A7F29AE6E9F008DA5A1 /* FoodViewModel.swift in Sources */,
 				1536E7C629B1C04F00010988 /* Products.swift in Sources */,
+				15D2A1EC29C8ABB50053F496 /* StringAdaptable.swift in Sources */,
 				15D2A1DD29C656CE0053F496 /* Color.swift in Sources */,
 				1536E7BD29B1921900010988 /* URLRequest.swift in Sources */,
 				15385A9529AF8E2C008DA5A1 /* BarcodeScannerView.swift in Sources */,
@@ -310,6 +394,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		15D2A1E729C888DD0053F496 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 15D3EE6A230FD97900F97FA6 /* Dense */;
+			targetProxy = 15D2A1E629C888DD0053F496 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		15D3EE79230FD97B00F97FA6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -322,6 +414,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		15D2A1E929C888DD0053F496 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CX87MDXJNH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joseph.pecoraro.DenseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dense.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dense";
+			};
+			name = Debug;
+		};
+		15D2A1EA29C888DD0053F496 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CX87MDXJNH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joseph.pecoraro.DenseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dense.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dense";
+			};
+			name = Release;
+		};
 		15D3EE7D230FD97B00F97FA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -483,6 +615,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		15D2A1E829C888DD0053F496 /* Build configuration list for PBXNativeTarget "DenseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15D2A1E929C888DD0053F496 /* Debug */,
+				15D2A1EA29C888DD0053F496 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		15D3EE66230FD97900F97FA6 /* Build configuration list for PBXProject "Dense" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

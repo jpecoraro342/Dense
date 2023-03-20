@@ -54,7 +54,7 @@ extension FileDataStore : ProductDataStore {
         if (productsInitialized) {
             return products
         }
-        
+                
         if let products : [Product] = decoder.readFromFile(filePath: productsFilePath) {
             self.products = products
         }

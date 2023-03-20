@@ -12,9 +12,9 @@ struct Product {
     var code: String
     var productName: String
     /// Net Wt (g)
-    var productQuantity: String? // TODO: Decode from number or string
+    @StringAdaptable var productQuantity: String?
     /// Serving Size (g)
-    var servingQuantity: String?
+    @StringAdaptable var servingQuantity: String?
     var imageIngredientsUrl: URL?
     var imageNutritionUrl: URL?
     var imageUrl: URL?
@@ -106,14 +106,14 @@ extension Product {
 }
 
 struct Nutrients {
-    var carbohydratesServing: Double?
-    var energyKcalServing: Double?
-    var fatServing: Double?
-    var fiberServing: Double?
-    var proteinsServing: Double?
-    var saltServing: Double?
-    var sodiumServing: Double?
-    var sugarsServing: Double?
+    @DoubleAdaptable var carbohydratesServing: Double?
+    @DoubleAdaptable var energyKcalServing: Double?
+    @DoubleAdaptable var fatServing: Double?
+    @DoubleAdaptable var fiberServing: Double?
+    @DoubleAdaptable var proteinsServing: Double?
+    @DoubleAdaptable var saltServing: Double?
+    @DoubleAdaptable var sodiumServing: Double?
+    @DoubleAdaptable var sugarsServing: Double?
 }
 
 extension Nutrients : Codable {
