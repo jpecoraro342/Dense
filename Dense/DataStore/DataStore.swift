@@ -10,7 +10,7 @@ import Foundation
 
 protocol ProductDataStore {
     func getProducts() async -> [Product]
-    func getProduct(barcode: String) async -> Product?
+    func getProduct(barcode: String) async -> (Product?, NSError?)
     func putProduct(_ product: Product) async
 }
 

@@ -63,16 +63,21 @@ extension FileDataStore : ProductDataStore {
         return products
     }
     
-    func getProduct(barcode: String) async -> Product? {
+    func getProduct(barcode: String) async -> (Product?, NSError?) {
         if let product = await getProducts().first(where: { $0.code == barcode }) {
-            return product
-        }
-        else if let product = await OpenFoodFactsAPI.shared.getProduct(fromBarcode: barcode) {
-            await putProduct(product)
-            return product
+            return (product, nil)
         }
         
-        return nil
+        var (product, error) = await OpenFoodFactsAPI.shared.getProduct(fromBarcode: barcode)
+        
+        if let product = product {
+            await putProduct(product)
+            return (product, nil)
+        } else {
+            error = error ?? NSError(localizedDescription: "An unknown error occurred while trying to retrieve the food from the barcode.")
+        }
+        
+        return (nil, error)
     }
     
     func putProduct(_ product: Product) async {

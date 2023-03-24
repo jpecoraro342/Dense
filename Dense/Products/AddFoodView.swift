@@ -22,6 +22,7 @@ struct AddFoodView: View {
     @State var product: Product?
     
     @State var isLoadingBarcode = false
+    @State var error : String? = nil
     
     var action: (Product?) -> Void
     
@@ -31,17 +32,24 @@ struct AddFoodView: View {
                 BarcodeButtonPrompt { barcode in
                     Task {
                         isLoadingBarcode = true
-                        if let product = await dataStore.getProduct(barcode: barcode) {
+                        let (product, error) = await dataStore.getProduct(barcode: barcode)
+                        
+                        if let product = product {
                             self.product = product
                             updateStateWithProduct()
                         } else {
-                            // TODO:
                             print("unable to retrieve food from barcode")
                         }
+                        
+                        self.error = error?.localizedDescription
                         isLoadingBarcode = false
                     }
                 }
                 .padding(.top)
+                
+                if let error = error {
+                    Text(error)
+                }
                 
                 if (isLoadingBarcode) {
                     ProgressView()

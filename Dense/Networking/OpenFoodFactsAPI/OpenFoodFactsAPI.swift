@@ -30,10 +30,10 @@ class OpenFoodFactsAPI : NSObject {
         return urlBuilder?.url
     }
 
-    func getProduct(fromBarcode barcode: String) async -> Product? {
+    func getProduct(fromBarcode barcode: String) async -> (Product?, NSError?) {
         guard let url = urlForBarcode(barcode: barcode) else {
             print("error building url")
-            return nil
+            return (nil, NSError(localizedDescription: "Unable to get url for barcode"))
         }
         
         var request = URLRequest(url: url)
@@ -47,12 +47,11 @@ class OpenFoodFactsAPI : NSObject {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             let paginatedProducts = try decoder.decode(PaginatedProducts.self, from: data)
-            return paginatedProducts.products.first
+            return (paginatedProducts.products.first, nil)
         }
         catch {
             print("error: \(error)")
+            return(nil, NSError(error: error))
         }
-        
-        return nil
     }
 }

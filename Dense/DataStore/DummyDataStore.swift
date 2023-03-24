@@ -24,12 +24,12 @@ extension DummyDataStore : ProductDataStore {
         return products
     }
     
-    func getProduct(barcode: String) async -> Product? {
+    func getProduct(barcode: String) async -> (Product?, NSError?) {
         if let product = await getProducts().first(where: { $0.code == barcode }) {
-            return product
+            return (product, nil)
         }
         
-        return nil
+        return (nil, NSError(localizedDescription: "no products found"))
     }
     
     func putProduct(_ product: Product) async {

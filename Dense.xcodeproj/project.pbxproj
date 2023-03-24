@@ -30,6 +30,7 @@
 		15385A9529AF8E2C008DA5A1 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A9429AF8E2C008DA5A1 /* BarcodeScannerView.swift */; };
 		15385A9829AFA66E008DA5A1 /* BarcodeButtonPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A9729AFA66E008DA5A1 /* BarcodeButtonPrompt.swift */; };
 		15385A9A29AFEB15008DA5A1 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A9929AFEB15008DA5A1 /* View.swift */; };
+		15532CC329CDEFA400CF1B28 /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15532CC229CDEFA400CF1B28 /* NSError.swift */; };
 		15A0D9A329B7A51E0089D8CF /* DummyDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A0D9A229B7A51E0089D8CF /* DummyDataStore.swift */; };
 		15D2A1DB29B92B960053F496 /* ResupplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */; };
 		15D2A1DD29C656CE0053F496 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1DC29C656CE0053F496 /* Color.swift */; };
@@ -75,6 +76,7 @@
 		15385A9429AF8E2C008DA5A1 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
 		15385A9729AFA66E008DA5A1 /* BarcodeButtonPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeButtonPrompt.swift; sourceTree = "<group>"; };
 		15385A9929AFEB15008DA5A1 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		15532CC229CDEFA400CF1B28 /* NSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
 		15A0D9A229B7A51E0089D8CF /* DummyDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataStore.swift; sourceTree = "<group>"; };
 		15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplyViewModel.swift; sourceTree = "<group>"; };
 		15D2A1DC29C656CE0053F496 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				1536E7B629B11C6C00010988 /* Duration.swift */,
 				1536E7BC29B1921900010988 /* URLRequest.swift */,
 				15D2A1DC29C656CE0053F496 /* Color.swift */,
+				15532CC229CDEFA400CF1B28 /* NSError.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				15385A8329AE714C008DA5A1 /* FoodCalculator.swift in Sources */,
 				15385A8B29AE8BC6008DA5A1 /* ResupplyItemView.swift in Sources */,
 				15385A7429AE5B96008DA5A1 /* SceneDelegate.swift in Sources */,
+				15532CC329CDEFA400CF1B28 /* NSError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
