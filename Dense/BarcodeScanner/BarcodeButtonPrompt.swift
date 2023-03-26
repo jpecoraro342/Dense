@@ -16,8 +16,7 @@ struct BarcodeButtonPrompt: View {
     
     var body: some View {
         // TODO: Show different view if denied camera permissions, or unavailable
-        switch(cameraAuthStatus) {
-        case .authorized, .notDetermined:
+        VStack {
             Button() {
                 Task {
                     await showBarcodeScanner()
@@ -28,6 +27,7 @@ struct BarcodeButtonPrompt: View {
             }
             .buttonStyle(.bordered)
             .padding(.bottom)
+            .disabled(cameraAuthStatus == .restricted || cameraAuthStatus == .denied)
             .sheet(isPresented: $showingBarcodeScanner) {
                 BarcodeScannerView() { barcode in
                     if let barcode = barcode {
@@ -37,9 +37,11 @@ struct BarcodeButtonPrompt: View {
                     }
                 }
             }
-        case .restricted, .denied:
-            Text("Please allow camera access in order to access the barcode scanner")
-                .multilineTextAlignment(.center)
+            
+            if (cameraAuthStatus == .restricted || cameraAuthStatus == .denied) {
+                Text("Please allow camera access in order to access the barcode scanner")
+                    .multilineTextAlignment(.center)
+            }
         }
     }
     

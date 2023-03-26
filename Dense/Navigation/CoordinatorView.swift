@@ -12,7 +12,7 @@ struct CoordinatorView: View {
     @State var initialView = ResupplyView(resupply: ResupplyViewModel(), dataStore: FileDataStore())
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             initialView
         }
     }
