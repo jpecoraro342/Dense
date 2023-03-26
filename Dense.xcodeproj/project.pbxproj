@@ -31,6 +31,7 @@
 		15385A9829AFA66E008DA5A1 /* BarcodeButtonPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A9729AFA66E008DA5A1 /* BarcodeButtonPrompt.swift */; };
 		15385A9A29AFEB15008DA5A1 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A9929AFEB15008DA5A1 /* View.swift */; };
 		15532CC329CDEFA400CF1B28 /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15532CC229CDEFA400CF1B28 /* NSError.swift */; };
+		15532CC729D0D98100CF1B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15532CC629D0D98100CF1B28 /* Assets.xcassets */; };
 		15A0D9A329B7A51E0089D8CF /* DummyDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A0D9A229B7A51E0089D8CF /* DummyDataStore.swift */; };
 		15D2A1DB29B92B960053F496 /* ResupplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */; };
 		15D2A1DD29C656CE0053F496 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1DC29C656CE0053F496 /* Color.swift */; };
@@ -38,7 +39,6 @@
 		15D2A1EC29C8ABB50053F496 /* StringAdaptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1EB29C8ABB50053F496 /* StringAdaptable.swift */; };
 		15D2A1EF29C8C1950053F496 /* DoubleAdaptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1EE29C8C1950053F496 /* DoubleAdaptable.swift */; };
 		15D3EE6F230FD97900F97FA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D3EE6E230FD97900F97FA6 /* AppDelegate.swift */; };
-		15D3EE78230FD97B00F97FA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D3EE77230FD97B00F97FA6 /* Assets.xcassets */; };
 		15D3EE7B230FD97B00F97FA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D3EE79230FD97B00F97FA6 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +77,7 @@
 		15385A9729AFA66E008DA5A1 /* BarcodeButtonPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeButtonPrompt.swift; sourceTree = "<group>"; };
 		15385A9929AFEB15008DA5A1 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		15532CC229CDEFA400CF1B28 /* NSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
+		15532CC629D0D98100CF1B28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resuply/Assets.xcassets; sourceTree = "<group>"; };
 		15A0D9A229B7A51E0089D8CF /* DummyDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataStore.swift; sourceTree = "<group>"; };
 		15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplyViewModel.swift; sourceTree = "<group>"; };
 		15D2A1DC29C656CE0053F496 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -86,7 +87,6 @@
 		15D2A1EE29C8C1950053F496 /* DoubleAdaptable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleAdaptable.swift; sourceTree = "<group>"; };
 		15D3EE6B230FD97900F97FA6 /* Dense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D3EE6E230FD97900F97FA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		15D3EE77230FD97B00F97FA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15D3EE7A230FD97B00F97FA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15D3EE7C230FD97B00F97FA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -248,7 +248,7 @@
 				15385A9329AF8DA6008DA5A1 /* BarcodeScanner */,
 				15385A9629AF8E61008DA5A1 /* Products */,
 				15385A7529AE60C8008DA5A1 /* Resuply */,
-				15D3EE77230FD97B00F97FA6 /* Assets.xcassets */,
+				15532CC629D0D98100CF1B28 /* Assets.xcassets */,
 				15D3EE79230FD97B00F97FA6 /* LaunchScreen.storyboard */,
 				15D3EE7C230FD97B00F97FA6 /* Info.plist */,
 			);
@@ -344,7 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15D3EE7B230FD97B00F97FA6 /* LaunchScreen.storyboard in Resources */,
-				15D3EE78230FD97B00F97FA6 /* Assets.xcassets in Resources */,
+				15532CC729D0D98100CF1B28 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
