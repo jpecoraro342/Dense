@@ -9,6 +9,13 @@
 import Foundation
 
 class DummyDataStore {
+    init(products: [Product], resupplies: [Resupply]) {
+        self.products = products
+        self.resupplies = resupplies
+    }
+    
+    init() { }
+    
     var products = [
         Product(code: "1", productName: "Peanut Butter", productQuantity: "737", servingQuantity: "32", nutriments: Nutrients(energyKcalServing: 190)),
         Product(code: "2", productName: "Fritos", productQuantity: "400", servingQuantity: "10", nutriments: Nutrients(energyKcalServing: 140))

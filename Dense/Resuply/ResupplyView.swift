@@ -32,6 +32,15 @@ struct ResupplyView: View {
                     })
                 }
                 .onDelete { indexSet in Task { await delete(at:indexSet) } }
+                if (resupply.foods.count == 0) {
+//                    Button() {
+//                        showingAddFood = true
+//                    } label: {
+//                        Text("Add Food")
+//                    }
+                    Text("").listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                }
             }
             .listStyle(.plain)
             .scrollDismissesKeyboard(.immediately)
@@ -125,5 +134,7 @@ struct FoodListView_Previews: PreviewProvider {
     static var previews: some View {
         CoordinatorView(initialView: ResupplyView(resupply: ResupplyViewModel(),
                                                  dataStore: DummyDataStore()))
+        CoordinatorView(initialView: ResupplyView(resupply: ResupplyViewModel(),
+                                                 dataStore: DummyDataStore(products: [], resupplies: [])))
     }
 }

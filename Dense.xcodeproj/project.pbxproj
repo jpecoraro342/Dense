@@ -40,6 +40,7 @@
 		15D2A1EF29C8C1950053F496 /* DoubleAdaptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1EE29C8C1950053F496 /* DoubleAdaptable.swift */; };
 		15D3EE6F230FD97900F97FA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D3EE6E230FD97900F97FA6 /* AppDelegate.swift */; };
 		15D3EE7B230FD97B00F97FA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D3EE79230FD97B00F97FA6 /* LaunchScreen.storyboard */; };
+		15D7356629DB515D0071D3FE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D7356529DB515D0071D3FE /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		15D3EE6E230FD97900F97FA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15D3EE7A230FD97B00F97FA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15D3EE7C230FD97B00F97FA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15D7356529DB515D0071D3FE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 		15D2A1ED29C8AECE0053F496 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				15D7356529DB515D0071D3FE /* Colors.swift */,
 				15D2A1EB29C8ABB50053F496 /* StringAdaptable.swift */,
 				15D2A1EE29C8C1950053F496 /* DoubleAdaptable.swift */,
 			);
@@ -368,6 +371,7 @@
 				1536E7B529B07D0000010988 /* Bundle.swift in Sources */,
 				15385A8729AE8894008DA5A1 /* CoordinatorView.swift in Sources */,
 				15D2A1EF29C8C1950053F496 /* DoubleAdaptable.swift in Sources */,
+				15D7356629DB515D0071D3FE /* Colors.swift in Sources */,
 				15385A9829AFA66E008DA5A1 /* BarcodeButtonPrompt.swift in Sources */,
 				15385A9029AEC8B7008DA5A1 /* AddFoodView.swift in Sources */,
 				1536E7BF29B1B30000010988 /* FileDataStore.swift in Sources */,

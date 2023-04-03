@@ -30,8 +30,7 @@ struct ResupplyItemView: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
-            Color(light: Color(UIColor.tertiarySystemBackground),
-                  dark: Color(UIColor.secondarySystemBackground))
+            Color.systemBackground()
                 .cornerRadius(10)
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {

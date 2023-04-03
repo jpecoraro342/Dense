@@ -1,7 +1,7 @@
 ## Dense - Calorie Counter
 The calorie counting app for the ultralight backpacker
 
-Dense is designed for the most intense gram weenies, who not only need their gear to be ultralight, but also need their food to be ultralight. Scan barcodes of any food item to input the calories and weight into your resupply. Dense will then do all the heavy lifting, and tell you exactly how heavy your food is, and how calorie dense it is. Optimize your resupply by removing anything that isn't dense enough for you.
+Dense is designed for the most intense gram weenie, who not only needs their gear to be ultralight, but also needs their food to be ultralight. Scan barcodes of any food item to input the calories and weight into your resupply. Dense will then tell you exactly how heavy your food is, and how calorie dense it is. Optimize your resupply by removing anything that isn't dense enough for you.
 
 **Coming Soon**
 
@@ -11,6 +11,7 @@ Dense is designed for the most intense gram weenies, who not only need their gea
 - [ ] Update open food facts api from directly within the app
 - [ ] Dev mode to manage all the data stored locally on your device
 - [ ] Macro tracking
+- [ ] Support for grams or ounces
 
 **API Info**
 
