@@ -33,6 +33,7 @@
 		15532CC329CDEFA400CF1B28 /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15532CC229CDEFA400CF1B28 /* NSError.swift */; };
 		15532CC729D0D98100CF1B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15532CC629D0D98100CF1B28 /* Assets.xcassets */; };
 		15A0D9A329B7A51E0089D8CF /* DummyDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A0D9A229B7A51E0089D8CF /* DummyDataStore.swift */; };
+		15A45BFA29DB64AB001693C3 /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A45BF929DB64AB001693C3 /* FloatingTextField.swift */; };
 		15D2A1DB29B92B960053F496 /* ResupplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */; };
 		15D2A1DD29C656CE0053F496 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1DC29C656CE0053F496 /* Color.swift */; };
 		15D2A1E529C888DD0053F496 /* DenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1E429C888DD0053F496 /* DenseTests.swift */; };
@@ -80,6 +81,7 @@
 		15532CC229CDEFA400CF1B28 /* NSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
 		15532CC629D0D98100CF1B28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resuply/Assets.xcassets; sourceTree = "<group>"; };
 		15A0D9A229B7A51E0089D8CF /* DummyDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataStore.swift; sourceTree = "<group>"; };
+		15A45BF929DB64AB001693C3 /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
 		15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplyViewModel.swift; sourceTree = "<group>"; };
 		15D2A1DC29C656CE0053F496 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		15D2A1E229C888DD0053F496 /* DenseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DenseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +219,7 @@
 				15D7356529DB515D0071D3FE /* Colors.swift */,
 				15D2A1EB29C8ABB50053F496 /* StringAdaptable.swift */,
 				15D2A1EE29C8C1950053F496 /* DoubleAdaptable.swift */,
+				15A45BF929DB64AB001693C3 /* FloatingTextField.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				1536E7C429B1BCFB00010988 /* DataStore.swift in Sources */,
 				1536E7AF29B06D1A00010988 /* JSONEncoder.swift in Sources */,
 				15385A9A29AFEB15008DA5A1 /* View.swift in Sources */,
+				15A45BFA29DB64AB001693C3 /* FloatingTextField.swift in Sources */,
 				1536E7B329B0773200010988 /* OpenFoodFactsAPI.swift in Sources */,
 				1536E7B129B06EC100010988 /* JSONDecoder.swift in Sources */,
 				15385A7829AE6100008DA5A1 /* ResupplyView.swift in Sources */,

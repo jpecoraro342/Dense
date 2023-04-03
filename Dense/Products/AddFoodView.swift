@@ -71,27 +71,17 @@ struct AddFoodView: View {
     
     var inputFields: some View {
         VStack {
-            TextField("Name", text: $name)
-                .textFieldStyle(.roundedBorder)
-                .onTapGesture {/* capture tap to prevent keyboard dismiss */}
-            TextField("Calories Per Serving", text: $caloriesPerServing)
+            FloatingTextField("Name", text: $name)
+            FloatingTextField("Calories Per Serving", text: $caloriesPerServing)
                 .keyboardType(.decimalPad)
-                .textFieldStyle(.roundedBorder)
-                .onTapGesture {/* capture tap to prevent keyboard dismiss */}
-            TextField("Number of Servings", text: $numberOfServings)
+            FloatingTextField("Number of Servings", text: $numberOfServings)
                 .keyboardType(.decimalPad)
-                .textFieldStyle(.roundedBorder)
-                .onTapGesture {/* capture tap to prevent keyboard dismiss */}
             HStack {
-                TextField("Serving Size (g)", text: $servingSizeG)
+                FloatingTextField("Serving Size (g)", text: $servingSizeG)
                     .keyboardType(.decimalPad)
-                    .textFieldStyle(.roundedBorder)
-                    .onTapGesture {/* capture tap to prevent keyboard dismiss */}
                 Text("or")
-                TextField("Net Wt (g)", text: $netWtG)
+                FloatingTextField("Net Wt (g)", text: $netWtG)
                     .keyboardType(.decimalPad)
-                    .textFieldStyle(.roundedBorder)
-                    .onTapGesture {/* capture tap to prevent keyboard dismiss */}
             }
             
             HStack(alignment: .center, spacing: 20) {
