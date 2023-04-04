@@ -43,9 +43,6 @@ struct ResupplyItemView: View {
                         TextField("0", text: $quantity)
                             .keyboardType(.decimalPad)
                             .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 10))
-//                            .overlay(
-//                                RoundedRectangle(cornerRadius: 5)
-//                                    .stroke(Color(UIColor.systemGray5)))
                             .multilineTextAlignment(.center)
                             .fixedSize()
                             .onChange(of: quantity) {
@@ -58,11 +55,11 @@ struct ResupplyItemView: View {
                     Divider()
                     HStack {
                         // TODO: Use the calculator for these
-                        Text("\(formatter.string(food.totalCalories*food.quantity) ?? "") Cal")
+                        Text("\(formatter.string(food.totalCalories*food.quantity)) Cal")
                         Spacer()
                         Text(formatter.gramsToLbsOz(food.netWeightG*food.quantity))
                         Spacer()
-                        Text("\(formatter.string(food.totalCalories/(food.netWeightG*FoodCalculator.gramsToOunces)) ?? "") Cal/Oz")
+                        Text("\(formatter.string(food.totalCalories/(food.netWeightG*FoodCalculator.gramsToOunces))) Cal/Oz")
                             .padding(.trailing, 10)
                     }
                 }

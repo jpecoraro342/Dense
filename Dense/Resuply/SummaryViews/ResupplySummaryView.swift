@@ -29,7 +29,7 @@ struct ResupplySummaryView: View {
             HStack() {
                 VStack {
                     Text("Total Calories")
-                    Text(formatter.string((FoodCalculator(foodList: resupply.foods).calories())) ?? "")
+                    Text(formatter.string(FoodCalculator(foodList: resupply.foods).calories()))
                 }
                 Spacer()
                 VStack {
@@ -39,7 +39,8 @@ struct ResupplySummaryView: View {
                 Spacer()
                 VStack {
                     Text("Calories/Oz")
-                    Text(formatter.string((FoodCalculator(foodList: resupply.foods).calories()/FoodCalculator(foodList: resupply.foods).weight())) ?? "")
+                    Text(formatter.string(
+                        FoodCalculator(foodList: resupply.foods).calories()/FoodCalculator(foodList: resupply.foods).weight()))
                 }
             }
             .padding()

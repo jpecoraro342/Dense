@@ -44,7 +44,9 @@ struct ResupplyView: View {
             }
             .listStyle(.plain)
             .scrollDismissesKeyboard(.immediately)
+            ResupplyDaySummary(resupply: $resupply, isExpanded: false)
         }
+//        .ignoresSafeArea(.container, edges: .bottom)
         .background(Color(UIColor.systemGroupedBackground))
         .navigationTitle("Resupply")
         .navigationBarTitleDisplayMode(.inline)

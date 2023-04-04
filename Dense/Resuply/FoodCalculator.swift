@@ -24,4 +24,12 @@ class FoodCalculator : NSObject {
     func calories() -> Double {
         return food.reduce(0, { $0 + ($1.totalCalories * $1.quantity) })
     }
+    
+    func daysOfFood(caloriesPerDay : Double) -> Double {
+        return calories()/caloriesPerDay
+    }
+    
+    func caloriesNeeded(caloriesPerDay : Double, numberOfDays: Double) -> Double {
+        return (caloriesPerDay * numberOfDays) - calories()
+    }
 }

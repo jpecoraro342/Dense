@@ -9,8 +9,8 @@
 import Foundation
 
 extension NumberFormatter {
-    func string(_ from: Double) -> String? {
-        return self.string(from: NSNumber(value: from))
+    func string(_ from: Double, default: String = "") -> String {
+        return self.string(from: NSNumber(value: from)) ?? ""
     }
     
     func gramsToLbsOz(_ weight: Double) -> String {
@@ -19,12 +19,12 @@ extension NumberFormatter {
     
     func lbsOz(_ weight: Double) -> String {
         if weight < 16 {
-            return "\(self.string(weight) ?? "0")oz"
+            return "\(self.string(weight, default: "0"))oz"
         }
         
         let oz = weight.truncatingRemainder(dividingBy: 16)
         let lbs = (weight - oz)/16
         
-        return "\(self.string(lbs) ?? "0")lbs \(self.string(oz) ?? "0")oz"
+        return "\(self.string(lbs, default: "0"))lbs \(self.string(oz, default: "0"))oz"
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1520702329DB921C0034E7DE /* ResupplyDaySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1520702229DB921C0034E7DE /* ResupplyDaySummary.swift */; };
 		1536E7AF29B06D1A00010988 /* JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536E7AE29B06D1A00010988 /* JSONEncoder.swift */; };
 		1536E7B129B06EC100010988 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536E7B029B06EC100010988 /* JSONDecoder.swift */; };
 		1536E7B329B0773200010988 /* OpenFoodFactsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536E7B229B0773200010988 /* OpenFoodFactsAPI.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1520702229DB921C0034E7DE /* ResupplyDaySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplyDaySummary.swift; sourceTree = "<group>"; };
 		1536E7AE29B06D1A00010988 /* JSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncoder.swift; sourceTree = "<group>"; };
 		1536E7B029B06EC100010988 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
 		1536E7B229B0773200010988 /* OpenFoodFactsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFoodFactsAPI.swift; sourceTree = "<group>"; };
@@ -113,6 +115,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1520702429DB9F870034E7DE /* SummaryViews */ = {
+			isa = PBXGroup;
+			children = (
+				15385A8829AE8B81008DA5A1 /* ResupplySummaryView.swift */,
+				1520702229DB921C0034E7DE /* ResupplyDaySummary.swift */,
+			);
+			path = SummaryViews;
+			sourceTree = "<group>";
+		};
+		1520702529DB9F920034E7DE /* ListViews */ = {
+			isa = PBXGroup;
+			children = (
+				15385A7729AE6100008DA5A1 /* ResupplyView.swift */,
+				15385A8A29AE8BC6008DA5A1 /* ResupplyItemView.swift */,
+			);
+			path = ListViews;
+			sourceTree = "<group>";
+		};
 		1536E7B829B12B7D00010988 /* StartupDelegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,9 +162,8 @@
 		15385A7529AE60C8008DA5A1 /* Resuply */ = {
 			isa = PBXGroup;
 			children = (
-				15385A7729AE6100008DA5A1 /* ResupplyView.swift */,
-				15385A8829AE8B81008DA5A1 /* ResupplySummaryView.swift */,
-				15385A8A29AE8BC6008DA5A1 /* ResupplyItemView.swift */,
+				1520702529DB9F920034E7DE /* ListViews */,
+				1520702429DB9F870034E7DE /* SummaryViews */,
 				15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */,
 				15385A7E29AE6E9F008DA5A1 /* FoodViewModel.swift */,
 				1536E7C029B1B32B00010988 /* Resupply.swift */,
@@ -371,6 +390,7 @@
 			files = (
 				15D3EE6F230FD97900F97FA6 /* AppDelegate.swift in Sources */,
 				1536E7B729B11C6C00010988 /* Duration.swift in Sources */,
+				1520702329DB921C0034E7DE /* ResupplyDaySummary.swift in Sources */,
 				1536E7B529B07D0000010988 /* Bundle.swift in Sources */,
 				15385A8729AE8894008DA5A1 /* CoordinatorView.swift in Sources */,
 				15D2A1EF29C8C1950053F496 /* DoubleAdaptable.swift in Sources */,

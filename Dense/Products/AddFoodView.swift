@@ -72,6 +72,7 @@ struct AddFoodView: View {
     var inputFields: some View {
         VStack {
             FloatingTextField("Name", text: $name)
+                .autocorrectionDisabled()
             FloatingTextField("Calories Per Serving", text: $caloriesPerServing)
                 .keyboardType(.decimalPad)
             FloatingTextField("Number of Servings", text: $numberOfServings)
