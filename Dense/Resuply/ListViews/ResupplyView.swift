@@ -44,7 +44,19 @@ struct ResupplyView: View {
             }
             .listStyle(.plain)
             .scrollDismissesKeyboard(.immediately)
-            ResupplyDaySummary(resupply: $resupply, isExpanded: false)
+            ResupplyDaySummary(resupply: $resupply, isExpanded: false,
+                               caloriesPerDayUpdated: { caloriesPerDay in
+                Task {
+                    await dataStore.putCaloriesPerDay(caloriesPerDay, forResupply: resupply.id)
+                    await updateResupplyViewModel()
+                }
+            },
+                               targetDaysUpdated: { targetDays in
+                Task {
+                    await dataStore.putTargetNumberOfDays(targetDays, forResupply: resupply.id)
+                    await updateResupplyViewModel()
+                }
+            })
         }
 //        .ignoresSafeArea(.container, edges: .bottom)
         .background(Color(UIColor.systemGroupedBackground))

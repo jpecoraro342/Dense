@@ -19,6 +19,8 @@ protocol ResupplyDataStore {
     func getResupply(id: String) async -> Resupply?
     func putResupply(_ resupply: Resupply) async
     func resetResupply(id: String) async -> Resupply?
+    func putCaloriesPerDay(_ caloriesPerDay: Double, forResupply id: String) async
+    func putTargetNumberOfDays(_ targetDays: Double, forResupply id: String) async
     func putItem(_ item: ResupplyItem, toResupply: String) async
     func removeItem(_ item: ResupplyItem, fromResupply: String) async
 }

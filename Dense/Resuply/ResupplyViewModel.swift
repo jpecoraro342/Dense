@@ -14,6 +14,8 @@ struct ResupplyViewModel {
     var id: String
     var name: String
     var foods: [FoodViewModel]
+    var caloriesPerDay: Double = Resupply.defaultCaloriesPerDay
+    var targetNumberOfDays: Double = Resupply.defaultNumberOfDays
 }
 
 extension ResupplyViewModel {
@@ -36,5 +38,8 @@ extension ResupplyViewModel {
                 foods.append(FoodViewModel(resupplyItem: item, product: product))
             }
         }
+        
+        caloriesPerDay = resupply.caloriesPerDay
+        targetNumberOfDays = resupply.targetNumberOfDays
     }
 }

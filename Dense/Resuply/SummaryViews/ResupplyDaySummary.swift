@@ -11,10 +11,25 @@ import SwiftUI
 struct ResupplyDaySummary: View {
     @Binding var resupply : ResupplyViewModel
     
-    @State var isExpanded = false
+    @State var isExpanded : Bool
     
-    @State var caloriesPerDay = ""
-    @State var targetDays = ""
+    @State var caloriesPerDay : String
+    @State var targetDays : String
+    
+    var caloriesPerDayUpdated: (Double) -> Void
+    var targetDaysUpdated: (Double) -> Void
+    
+    init(resupply: Binding<ResupplyViewModel>, isExpanded: Bool = false, caloriesPerDayUpdated: @escaping (Double) -> Void, targetDaysUpdated: @escaping (Double) -> Void) {
+        _resupply = resupply
+        _isExpanded = State(initialValue: isExpanded)
+        _caloriesPerDay = State(initialValue: formatter.string(resupply.wrappedValue.caloriesPerDay))
+        _targetDays = State(initialValue: formatter.string(resupply.wrappedValue.targetNumberOfDays))
+        self.caloriesPerDayUpdated = caloriesPerDayUpdated
+        self.targetDaysUpdated = targetDaysUpdated
+        print(self.isExpanded)
+        print(self.caloriesPerDay)
+        print(self.targetDays)
+    }
     
     let formatter : NumberFormatter = {
         let numberFormatter = NumberFormatter()
@@ -27,55 +42,58 @@ struct ResupplyDaySummary: View {
     var body: some View {
         ZStack(alignment: .leading) {
             Color(UIColor.systemBackground)
-            VStack(spacing: 5) {
+            DisclosureGroup(isExpanded: $isExpanded) {
+                Divider()
+                HStack {
+                    Text("Target Days:")
+                    TextField("", text: $targetDays)
+                        .keyboardType(.decimalPad)
+                        .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 10))
+                        .multilineTextAlignment(.center)
+                        .fixedSize()
+                        .onChange(of: targetDays) { targetDays in
+                            if let targetDays = Double(targetDays) {
+                                self.targetDaysUpdated(targetDays)
+                            }
+                        }
+                        .onAppear {
+                            self.targetDays = self.targetDays
+                        }
+                        .onTapGesture {/* capture tap to prevent keyboard dismiss */}
+                    Spacer()
+                    Text("Calories/Day:")
+                    TextField("", text: $caloriesPerDay)
+                        .keyboardType(.decimalPad)
+                        .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 10))
+                        .multilineTextAlignment(.center)
+                        .fixedSize()
+                        .onChange(of: caloriesPerDay) { caloriesPerDay in
+                            if let caloriesPerDay = Double(caloriesPerDay) {
+                                self.caloriesPerDayUpdated(caloriesPerDay)
+                            }
+                        }
+                        .onAppear {
+                            self.caloriesPerDay = self.caloriesPerDay
+                        }
+                        .onTapGesture {/* capture tap to prevent keyboard dismiss */}
+                }
+            } label: {
                 VStack(spacing: 5) {
                     HStack {
                         Text("Days of Food: ")
-                        Text(formatter.string(FoodCalculator(foodList: resupply.foods).daysOfFood(caloriesPerDay: Double(caloriesPerDay) ?? 3500.0)))
+                        Text(formatter.string(FoodCalculator(foodList: resupply.foods).daysOfFood(caloriesPerDay: resupply.caloriesPerDay)))
                         Spacer()
-                        Text(isExpanded ? "\(Image(systemName: "chevron.up"))" : "\(Image(systemName: "chevron.down"))")
-                            .padding(.trailing, 10)
-                            .foregroundColor(Color(.placeholderText))
-                            .fontWeight(.bold)
                     }
                     HStack(alignment: .center) {
                         Text("Calories Needed: ")
-                        Text(formatter.string(FoodCalculator(foodList: resupply.foods).caloriesNeeded(caloriesPerDay: Double(caloriesPerDay) ?? 3500.0, numberOfDays: Double(targetDays) ?? 4.5)))
+                        Text(formatter.string(FoodCalculator(foodList: resupply.foods).caloriesNeeded(caloriesPerDay: resupply.caloriesPerDay, numberOfDays: resupply.targetNumberOfDays)))
                         Spacer()
                     }
                     .padding(.bottom, 5)
                 }
-                .onTapGesture {
-                    isExpanded.toggle()
-                }
-                if isExpanded {
-                    Divider()
-                    HStack {
-                        Text("Target Days:")
-                        TextField("4.5", text: $targetDays)
-                            .keyboardType(.decimalPad)
-                            .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 10))
-                            .multilineTextAlignment(.center)
-                            .fixedSize()
-                            .onChange(of: targetDays) { targetDays in
-                                // TODO: Save to NSUserDefaults
-                            }
-                            .onTapGesture {/* capture tap to prevent keyboard dismiss */}
-                        Spacer()
-                        Text("Calories/Day:")
-                        TextField("3500.0", text: $caloriesPerDay)
-                            .keyboardType(.decimalPad)
-                            .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 10))
-                            .multilineTextAlignment(.center)
-                            .fixedSize()
-                            .onChange(of: caloriesPerDay) { caloriesPerDay in
-                                // TODO: Save to NSUserDefaults
-                            }
-                            .onTapGesture {/* capture tap to prevent keyboard dismiss */}
-                    }
-                }
-                // TODO: Handle cals/day change
+                .tint(Color(.label))
             }
+            .tint(Color(.placeholderText))
             .padding()
             .overlay(Divider(), alignment: .top)
         }
@@ -86,16 +104,18 @@ struct ResupplyDaySummary: View {
 struct ResupplyDaySummary_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            ResupplyDaySummary(
-                resupply: .constant(ResupplyViewModel(
-                    resupply: DummyDataStore().resupplies.first!,
-                    products: DummyDataStore().products)),
-            isExpanded: true)
-            ResupplyDaySummary(
-                resupply: .constant(ResupplyViewModel(
-                    resupply: DummyDataStore().resupplies.first!,
-                    products: DummyDataStore().products)),
-            isExpanded: false)
+            ResupplyDaySummary(resupply: .constant(ResupplyViewModel(
+                resupply: DummyDataStore().resupplies.first!,
+                products: DummyDataStore().products)),
+                               isExpanded: true,
+                               caloriesPerDayUpdated: { print($0) },
+                               targetDaysUpdated: { print($0) })
+            ResupplyDaySummary(resupply: .constant(ResupplyViewModel(
+                resupply: DummyDataStore().resupplies.first!,
+                products: DummyDataStore().products)),
+                               isExpanded: false,
+                               caloriesPerDayUpdated: { print($0) },
+                               targetDaysUpdated: { print($0) })
         }
     }
 }

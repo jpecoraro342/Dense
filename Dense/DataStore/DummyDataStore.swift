@@ -74,6 +74,27 @@ extension DummyDataStore : ResupplyDataStore {
         return nil
     }
     
+    // TODO: These probably don't work
+    func putCaloriesPerDay(_ caloriesPerDay: Double, forResupply id: String) async {
+        if let index = await getResupplies().firstIndex(where: { $0.id == id }) {
+            var resupply = resupplies[index]
+            resupply.caloriesPerDay = caloriesPerDay
+        } else {
+            var resupply = Resupply(date: Date(), id: id, name: "", items: [])
+            resupply.caloriesPerDay = caloriesPerDay
+        }
+    }
+    
+    func putTargetNumberOfDays(_ targetDays: Double, forResupply id: String) async {
+        if let index = await getResupplies().firstIndex(where: { $0.id == id }) {
+            var resupply = resupplies[index]
+            resupply.targetNumberOfDays = targetDays
+        } else {
+            var resupply = Resupply(date: Date(), id: id, name: "", items: [])
+            resupply.targetNumberOfDays = targetDays
+        }
+    }
+    
     func putItem(_ item: ResupplyItem, toResupply: String) async {
         if var resupply = await getResupply(id: toResupply) {
             resupply.put(item: item)

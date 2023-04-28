@@ -131,6 +131,35 @@ extension FileDataStore : ResupplyDataStore {
         return nil
     }
     
+    func putCaloriesPerDay(_ caloriesPerDay: Double, forResupply resupplyId: String) async {
+        if let index = await getResupplies().firstIndex(where: { $0.id == resupplyId }) {
+            var resupply = resupplies[index]
+            print(resupply)
+            resupply.caloriesPerDay = caloriesPerDay
+            print(resupply)
+            resupplies[index] = resupply
+        } else {
+            let resupply = Resupply(date: Date(), id: resupplyId, name: "", items: [], caloriesPerDay: caloriesPerDay)
+            resupplies.append(resupply)
+        }
+        
+        print(resupplies)
+        await saveResupplies()
+    }
+    
+    func putTargetNumberOfDays(_ targetDays: Double, forResupply resupplyId: String) async {
+        if let index = await getResupplies().firstIndex(where: { $0.id == resupplyId }) {
+            var resupply = resupplies[index]
+            resupply.targetNumberOfDays = targetDays
+            resupplies[index] = resupply
+        } else {
+            let resupply = Resupply(date: Date(), id: resupplyId, name: "", items: [], targetNumberOfDays: targetDays)
+            resupplies.append(resupply)
+        }
+        
+        await saveResupplies()
+    }
+    
     func putItem(_ item: ResupplyItem, toResupply resupplyId: String) async {
         if let index = await getResupplies().firstIndex(where: { $0.id == resupplyId }) {
             var resupply = resupplies[index]
