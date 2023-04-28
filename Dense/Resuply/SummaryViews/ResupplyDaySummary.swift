@@ -46,34 +46,24 @@ struct ResupplyDaySummary: View {
                 Divider()
                 HStack {
                     Text("Target Days:")
-                    TextField("", text: $targetDays)
+                    TextField("", value: $resupply.targetNumberOfDays, formatter: formatter)
                         .keyboardType(.decimalPad)
                         .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 10))
                         .multilineTextAlignment(.center)
                         .fixedSize()
-                        .onChange(of: targetDays) { targetDays in
-                            if let targetDays = Double(targetDays) {
-                                self.targetDaysUpdated(targetDays)
-                            }
-                        }
-                        .onAppear {
-                            self.targetDays = self.targetDays
+                        .onChange(of: $resupply.wrappedValue.targetNumberOfDays) { targetDays in
+                            self.targetDaysUpdated(targetDays)
                         }
                         .onTapGesture {/* capture tap to prevent keyboard dismiss */}
                     Spacer()
                     Text("Calories/Day:")
-                    TextField("", text: $caloriesPerDay)
+                    TextField("", value: $resupply.caloriesPerDay, formatter: formatter)
                         .keyboardType(.decimalPad)
                         .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 10))
                         .multilineTextAlignment(.center)
                         .fixedSize()
-                        .onChange(of: caloriesPerDay) { caloriesPerDay in
-                            if let caloriesPerDay = Double(caloriesPerDay) {
-                                self.caloriesPerDayUpdated(caloriesPerDay)
-                            }
-                        }
-                        .onAppear {
-                            self.caloriesPerDay = self.caloriesPerDay
+                        .onChange(of: $resupply.wrappedValue.caloriesPerDay) { caloriesPerDay in
+                            self.caloriesPerDayUpdated(caloriesPerDay)
                         }
                         .onTapGesture {/* capture tap to prevent keyboard dismiss */}
                 }
