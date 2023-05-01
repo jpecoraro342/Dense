@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ResupplyView: View {
     @State private var showingAddFood = false
+    @State private var showingAddMultiple = false
     @State var resupplyId : String?
     @State var resupply : ResupplyViewModel
     
@@ -20,81 +21,34 @@ struct ResupplyView: View {
     var body: some View {
         VStack {
             ResupplySummaryView(resupply: $resupply)
-            List {
-                ForEach(resupply.foods, id: \.productId) { food in
-                    ResupplyItemView(food: food, quantityUpdated: { quantity in
-                        Task {
-                            var updatedFood = food
-                            updatedFood.quantity = quantity
-                            await dataStore.putItem(updatedFood.resupplyItem(), toResupply: resupply.id)
-                            await updateResupplyViewModel()
-                        }
-                    })
-                }
-                .onDelete { indexSet in Task { await delete(at:indexSet) } }
-                if (resupply.foods.count == 0) {
-//                    Button() {
-//                        showingAddFood = true
-//                    } label: {
-//                        Text("Add Food")
-//                    }
-                    Text("").listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
-                }
-            }
-            .listStyle(.plain)
-            .scrollDismissesKeyboard(.immediately)
-            ResupplyDaySummary(resupply: $resupply, isExpanded: false,
-                               caloriesPerDayUpdated: { caloriesPerDay in
-                Task {
-                    await dataStore.putCaloriesPerDay(caloriesPerDay, forResupply: resupply.id)
-                    await updateResupplyViewModel()
-                }
-            },
-                               targetDaysUpdated: { targetDays in
-                Task {
-                    await dataStore.putTargetNumberOfDays(targetDays, forResupply: resupply.id)
-                    await updateResupplyViewModel()
-                }
-            })
+            resupplyItemViewList
+            ResupplyDaySummary(
+                resupply: $resupply,
+                isExpanded: false,
+                caloriesPerDayUpdated: { caloriesPerDay in
+                    Task {
+                        await dataStore.putCaloriesPerDay(caloriesPerDay, forResupply: resupply.id)
+                        await updateResupplyViewModel()
+                    }
+                },
+                targetDaysUpdated: { targetDays in
+                    Task {
+                        await dataStore.putTargetNumberOfDays(targetDays, forResupply: resupply.id)
+                        await updateResupplyViewModel()
+                    }
+                })
         }
-//        .ignoresSafeArea(.container, edges: .bottom)
         .background(Color(UIColor.systemGroupedBackground))
         .navigationTitle("Resupply")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button("Reset") {
-                    showingResetConfirmation = true
-                }
-                .alert("Are you sure you want to reset?", isPresented: $showingResetConfirmation) {
-                    Button("Reset", role: .destructive) {
-                        Task {
-                            if let resupply = await dataStore.resetResupply(id: resupply.id) {
-                                self.resupply = ResupplyViewModel(resupply: resupply, products: await dataStore.getProducts())
-                            }
-                        }
-                    }
-                    Button("Cancel", role: .cancel) { }
-                } message: {
-                    Text("This will clear all foods added to this resupply")
-                }
+            ToolbarItem(placement: .secondaryAction) {
+                addFoodButton
+                multiAddButton
+                resetButton
             }
             ToolbarItem(placement: .primaryAction) {
-                Button("Add Food") {
-                    showingAddFood = true
-                }
-                .sheet(isPresented: $showingAddFood) {
-                    AddFoodView(dataStore: dataStore) { product in
-                        if let product = product {
-                            let resupplyItem = ResupplyItem(productId: product.code, quantity: 1)
-                            Task {
-                                await dataStore.putItem(resupplyItem, toResupply: resupply.id)
-                                await updateResupplyViewModel()
-                            }
-                        }
-                    }
-                }
+                addFoodButton
             }
         }
         .toolbarBackground(
@@ -106,6 +60,80 @@ struct ResupplyView: View {
         }
         .onTapGesture {
             dismissKeyboard()
+        }
+    }
+    
+    var resupplyItemViewList: some View {
+        List {
+            ForEach(resupply.foods, id: \.productId) { food in
+                ResupplyItemView(food: food, quantityUpdated: { quantity in
+                    Task {
+                        var updatedFood = food
+                        updatedFood.quantity = quantity
+                        await dataStore.putItem(updatedFood.resupplyItem(), toResupply: resupply.id)
+                        await updateResupplyViewModel()
+                    }
+                })
+            }
+            .onDelete { indexSet in Task { await delete(at:indexSet) } }
+            if (resupply.foods.count == 0) {
+                Text("").listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+            }
+        }
+        .listStyle(.plain)
+        .scrollDismissesKeyboard(.immediately)
+    }
+    
+    var addFoodButton: some View {
+        Button("Add Food") {
+            showingAddFood = true
+        }
+        .sheet(isPresented: $showingAddFood) {
+            AddFoodView(dataStore: dataStore) { product in
+                if let product = product {
+                    let resupplyItem = ResupplyItem(productId: product.code, quantity: 1)
+                    Task {
+                        await dataStore.putItem(resupplyItem, toResupply: resupply.id)
+                        await updateResupplyViewModel()
+                    }
+                }
+            }
+        }
+    }
+    
+    var resetButton: some View {
+        Button("Reset") {
+            showingResetConfirmation = true
+        }
+        .alert("Are you sure you want to reset?", isPresented: $showingResetConfirmation) {
+            Button("Reset", role: .destructive) {
+                Task {
+                    if let resupply = await dataStore.resetResupply(id: resupply.id) {
+                        self.resupply = ResupplyViewModel(resupply: resupply, products: await dataStore.getProducts())
+                    }
+                }
+            }
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("This will clear all foods added to this resupply")
+        }
+    }
+    
+    var multiAddButton: some View {
+        Button("Add Previously Used Foods") {
+            showingAddMultiple = true
+        }
+        .sheet(isPresented: $showingAddMultiple) {
+//            AddMultipleView(dataStore: dataStore) { products in
+//                for product in products {
+//                    let resupplyItem = ResupplyItem(productId: product.code, quantity: 1)
+//                    Task {
+//                        await dataStore.putItem(resupplyItem, toResupply: resupply.id)
+//                        await updateResupplyViewModel()
+//                    }
+//                }
+//            }
         }
     }
     
