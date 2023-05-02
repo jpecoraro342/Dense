@@ -105,8 +105,12 @@ extension DummyDataStore : ResupplyDataStore {
     }
     
     func removeItem(_ item: ResupplyItem, fromResupply: String) async {
-        if var resupply = await getResupply(id: fromResupply) {
-            resupply.delete(item: item)
+        await removeItem(item.productId, fromResupply: fromResupply)
+    }
+    
+    func removeItem(_ itemId: String, fromResupply resupplyId: String) async {
+        if var resupply = await getResupply(id: resupplyId) {
+            resupply.delete(itemId: itemId)
         }
     }
 }

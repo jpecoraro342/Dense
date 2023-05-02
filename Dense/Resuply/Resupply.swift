@@ -28,7 +28,11 @@ struct Resupply {
     }
     
     mutating func delete(item: ResupplyItem) {
-        if let index = items.firstIndex(where: { $0.productId == item.productId }) {
+        delete(itemId: item.productId)
+    }
+    
+    mutating func delete(itemId: String) {
+        if let index = items.firstIndex(where: { $0.productId == itemId }) {
             items.remove(at: index)
         }
     }

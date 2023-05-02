@@ -23,4 +23,5 @@ protocol ResupplyDataStore {
     func putTargetNumberOfDays(_ targetDays: Double, forResupply id: String) async
     func putItem(_ item: ResupplyItem, toResupply: String) async
     func removeItem(_ item: ResupplyItem, fromResupply: String) async
+    func removeItem(_ itemId: String, fromResupply resupplyId: String) async
 }

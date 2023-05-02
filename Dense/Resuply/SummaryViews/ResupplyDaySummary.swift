@@ -26,18 +26,9 @@ struct ResupplyDaySummary: View {
         _targetDays = State(initialValue: formatter.string(resupply.wrappedValue.targetNumberOfDays))
         self.caloriesPerDayUpdated = caloriesPerDayUpdated
         self.targetDaysUpdated = targetDaysUpdated
-        print(self.isExpanded)
-        print(self.caloriesPerDay)
-        print(self.targetDays)
     }
     
-    let formatter : NumberFormatter = {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        numberFormatter.maximumFractionDigits = 1
-        
-        return numberFormatter
-    }()
+    let formatter = NumberFormatter.decimalFormatter()
     
     var body: some View {
         ZStack(alignment: .leading) {

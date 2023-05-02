@@ -33,6 +33,7 @@
 		15385A9A29AFEB15008DA5A1 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A9929AFEB15008DA5A1 /* View.swift */; };
 		15532CC329CDEFA400CF1B28 /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15532CC229CDEFA400CF1B28 /* NSError.swift */; };
 		15532CC729D0D98100CF1B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15532CC629D0D98100CF1B28 /* Assets.xcassets */; };
+		1563A2562A003BE300B72687 /* MultiSelectFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1563A2552A003BE300B72687 /* MultiSelectFoodView.swift */; };
 		15A0D9A329B7A51E0089D8CF /* DummyDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A0D9A229B7A51E0089D8CF /* DummyDataStore.swift */; };
 		15A45BFA29DB64AB001693C3 /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A45BF929DB64AB001693C3 /* FloatingTextField.swift */; };
 		15D2A1DB29B92B960053F496 /* ResupplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */; };
@@ -82,6 +83,7 @@
 		15385A9929AFEB15008DA5A1 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		15532CC229CDEFA400CF1B28 /* NSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
 		15532CC629D0D98100CF1B28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resuply/Assets.xcassets; sourceTree = "<group>"; };
+		1563A2552A003BE300B72687 /* MultiSelectFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectFoodView.swift; sourceTree = "<group>"; };
 		15A0D9A229B7A51E0089D8CF /* DummyDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataStore.swift; sourceTree = "<group>"; };
 		15A45BF929DB64AB001693C3 /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
 		15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplyViewModel.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				15385A8F29AEC8B7008DA5A1 /* AddFoodView.swift */,
+				1563A2552A003BE300B72687 /* MultiSelectFoodView.swift */,
 				1536E7C529B1C04F00010988 /* Products.swift */,
 			);
 			path = Products;
@@ -396,6 +399,7 @@
 				15D2A1EF29C8C1950053F496 /* DoubleAdaptable.swift in Sources */,
 				15D7356629DB515D0071D3FE /* Colors.swift in Sources */,
 				15385A9829AFA66E008DA5A1 /* BarcodeButtonPrompt.swift in Sources */,
+				1563A2562A003BE300B72687 /* MultiSelectFoodView.swift in Sources */,
 				15385A9029AEC8B7008DA5A1 /* AddFoodView.swift in Sources */,
 				1536E7BF29B1B30000010988 /* FileDataStore.swift in Sources */,
 				1536E7C429B1BCFB00010988 /* DataStore.swift in Sources */,

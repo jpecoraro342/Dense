@@ -134,16 +134,13 @@ extension FileDataStore : ResupplyDataStore {
     func putCaloriesPerDay(_ caloriesPerDay: Double, forResupply resupplyId: String) async {
         if let index = await getResupplies().firstIndex(where: { $0.id == resupplyId }) {
             var resupply = resupplies[index]
-            print(resupply)
             resupply.caloriesPerDay = caloriesPerDay
-            print(resupply)
             resupplies[index] = resupply
         } else {
             let resupply = Resupply(date: Date(), id: resupplyId, name: "", items: [], caloriesPerDay: caloriesPerDay)
             resupplies.append(resupply)
         }
         
-        print(resupplies)
         await saveResupplies()
     }
     
@@ -174,9 +171,13 @@ extension FileDataStore : ResupplyDataStore {
     }
     
     func removeItem(_ item: ResupplyItem, fromResupply resupplyId: String) async {
+        await removeItem(item.productId, fromResupply: resupplyId)
+    }
+    
+    func removeItem(_ itemId: String, fromResupply resupplyId: String) async {
         if let index = await getResupplies().firstIndex(where: { $0.id == resupplyId }) {
             var resupply = resupplies[index]
-            resupply.delete(item: item)
+            resupply.delete(itemId: itemId)
             resupplies[index] = resupply
         }
         

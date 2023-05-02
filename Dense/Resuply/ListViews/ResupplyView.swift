@@ -9,11 +9,10 @@
 import SwiftUI
 
 struct ResupplyView: View {
-    @State private var showingAddFood = false
-    @State private var showingAddMultiple = false
     @State var resupplyId : String?
     @State var resupply : ResupplyViewModel
     
+    @State private var showingAddFood = false
     @State private var showingResetConfirmation = false
     
     let dataStore : ResupplyDataStore & ProductDataStore
@@ -44,7 +43,11 @@ struct ResupplyView: View {
         .toolbar {
             ToolbarItem(placement: .secondaryAction) {
                 addFoodButton
+            }
+            ToolbarItem(placement: .secondaryAction) {
                 multiAddButton
+            }
+            ToolbarItem(placement: .secondaryAction) {
                 resetButton
             }
             ToolbarItem(placement: .primaryAction) {
@@ -121,19 +124,28 @@ struct ResupplyView: View {
     }
     
     var multiAddButton: some View {
-        Button("Add Previously Used Foods") {
-            showingAddMultiple = true
-        }
-        .sheet(isPresented: $showingAddMultiple) {
-//            AddMultipleView(dataStore: dataStore) { products in
-//                for product in products {
-//                    let resupplyItem = ResupplyItem(productId: product.code, quantity: 1)
-//                    Task {
-//                        await dataStore.putItem(resupplyItem, toResupply: resupply.id)
-//                        await updateResupplyViewModel()
-//                    }
-//                }
-//            }
+        NavigationLink("Add Saved Foods") {
+            MultiSelectFoodView(
+                dataStore: dataStore,
+                // TODO: Do this mapping in a view model, or in the multiselect food view
+                selectedProducts: $resupply.foods.reduce(into: [String: Bool]()) {
+                    $0[$1.productId.wrappedValue] = true
+                }) { productId, isSelected in
+                    // TODO: put this logic somewhere else
+                    // TODO: This feels very not thread safe
+                    Task {
+                        if (!isSelected) {
+                            await dataStore.removeItem(productId, fromResupply: resupply.id)
+                            await updateResupplyViewModel()
+                        } else if let _ = resupply.foods.firstIndex(where: { $0.productId == productId }) {
+                            // Don't bother adding the product if it's already there
+                            return
+                        } else {
+                            await dataStore.putItem(ResupplyItem(productId: productId, quantity: 1), toResupply: resupply.id)
+                            await updateResupplyViewModel()
+                        }
+                    }
+                }
         }
     }
     
@@ -174,9 +186,13 @@ struct ResupplyView: View {
 
 struct FoodListView_Previews: PreviewProvider {
     static var previews: some View {
-        CoordinatorView(initialView: ResupplyView(resupply: ResupplyViewModel(),
-                                                 dataStore: DummyDataStore()))
-        CoordinatorView(initialView: ResupplyView(resupply: ResupplyViewModel(),
-                                                 dataStore: DummyDataStore(products: [], resupplies: [])))
+        CoordinatorView(
+            initialView: ResupplyView(
+                resupply: ResupplyViewModel(),
+                dataStore: DummyDataStore()))
+        CoordinatorView(
+            initialView: ResupplyView(
+                resupply: ResupplyViewModel(),
+                dataStore: DummyDataStore(products: [], resupplies: [])))
     }
 }

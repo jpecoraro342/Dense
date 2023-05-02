@@ -27,4 +27,12 @@ extension NumberFormatter {
         
         return "\(self.string(lbs, default: "0"))lbs \(self.string(oz, default: "0"))oz"
     }
+    
+    static func decimalFormatter() -> NumberFormatter {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = 1
+        
+        return numberFormatter
+    }
 }
