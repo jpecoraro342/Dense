@@ -83,6 +83,7 @@ struct ResupplyView: View {
                 Text("").listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
             }
+            // TODO: If resupply is empty, and products list is not empty, show "quick add" button here
         }
         .listStyle(.plain)
         .scrollDismissesKeyboard(.immediately)

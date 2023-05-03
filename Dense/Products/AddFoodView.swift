@@ -130,10 +130,16 @@ struct AddFoodView: View {
             caloriesPerServing = "\(calories)"
         }
         
-        guard let netWtG = product?.productQuantity else { return }
-        self.netWtG = netWtG
         
-        guard let servingSizeG = product?.servingQuantity else { return }
+        if let netWtG = product?.productQuantity {
+            self.netWtG = netWtG
+        }
+        
+        if let servingSizeG = product?.servingQuantity {
+            self.servingSizeG = servingSizeG
+        }
+        
+        guard let netWtG = product?.productQuantity, let servingSizeG = product?.servingQuantity else { return }
         
         let numberOfServings = (Double(netWtG) ?? 0) / (Double(servingSizeG) ?? 0)
         if numberOfServings != 0 {
