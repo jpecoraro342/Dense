@@ -18,8 +18,8 @@ class FileDataStore : NSObject {
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
     
-    private let productsFilePath = "products.json"
-    private let resuppliesFilePath = "resupplies.json"
+    public static let productsFilePath = "products.json"
+    public static let resuppliesFilePath = "resupplies.json"
     
     func initializeDataStore() async {
         async let _ = await getProducts()
@@ -32,7 +32,7 @@ extension FileDataStore {
         let clock = ContinuousClock()
 
         let result = clock.measure() {
-            encoder.writeToFile(object: products, filePath: productsFilePath)
+            encoder.writeToFile(object: products, filePath: Self.productsFilePath)
         }
         
         print("saved products in " + result.milliseconds() + "ms")
@@ -42,7 +42,7 @@ extension FileDataStore {
         let clock = ContinuousClock()
 
         let result = clock.measure() {
-            encoder.writeToFile(object: resupplies, filePath: resuppliesFilePath)
+            encoder.writeToFile(object: resupplies, filePath: Self.resuppliesFilePath)
         }
         
         print("saved resupplies in " + result.milliseconds() + "ms")
@@ -55,7 +55,7 @@ extension FileDataStore : ProductDataStore {
             return products
         }
                 
-        if let products : [Product] = decoder.readFromFile(filePath: productsFilePath) {
+        if let products : [Product] = decoder.readFromFile(filePath: Self.productsFilePath) {
             self.products = products
         }
         
@@ -97,7 +97,7 @@ extension FileDataStore : ResupplyDataStore {
             return resupplies
         }
         
-        if let resupplies : [Resupply] = decoder.readFromFile(filePath: resuppliesFilePath) {
+        if let resupplies : [Resupply] = decoder.readFromFile(filePath: Self.resuppliesFilePath) {
             self.resupplies = resupplies
         }
         
