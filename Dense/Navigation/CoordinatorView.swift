@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CoordinatorView: View {
     @State var initialView = ResupplyView(resupply: ResupplyViewModel(), dataStore: FileDataStore())
-    
+
     var body: some View {
         NavigationStack {
             initialView

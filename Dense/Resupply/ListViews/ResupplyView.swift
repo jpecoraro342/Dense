@@ -66,9 +66,6 @@ struct ResupplyView: View {
         .task {
             await initResupply()
         }
-        .onTapGesture {
-            dismissKeyboard()
-        }
     }
     
     var resupplyItemViewList: some View {
@@ -83,7 +80,7 @@ struct ResupplyView: View {
                     }
                 })
             }
-            .onDelete { indexSet in Task { await delete(at:indexSet) } }
+            .onDelete(perform: delete(at:))
             if (resupply.foods.count == 0) {
                 Text("").listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
@@ -178,15 +175,22 @@ struct ResupplyView: View {
         self.resupply = ResupplyViewModel(resupply: resupply, products: await dataStore.getProducts())
     }
     
-    func delete(at offsets: IndexSet) async {
+    func delete(at offsets: IndexSet) {
         guard let id = resupplyId else { return }
         
-        for index in offsets {
-            // TODO: Can this throw an error?
-            let item = resupply.foods[index]
-            await dataStore.removeItem(item.resupplyItem(), fromResupply: id)
-            await updateResupplyViewModel()
+        Task {
+            for index in offsets {
+                // TODO: Can this throw an error?
+                let item = resupply.foods[index]
+                await dataStore.removeItem(item.resupplyItem(), fromResupply: id)
+                await updateResupplyViewModel()
+            }
         }
+    }
+    
+    func delete(id: String) async {
+        await dataStore.removeItem(id, fromResupply: resupply.id)
+        await updateResupplyViewModel()
     }
 }
 
