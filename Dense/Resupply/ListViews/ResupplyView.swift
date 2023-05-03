@@ -51,7 +51,9 @@ struct ResupplyView: View {
                 resetButton
             }
             ToolbarItem(placement: .secondaryAction) {
-                exportDataButton
+                NavigationLink("Debug Menu") {
+                    DebugMenuView(dataStore: dataStore)
+                }
             }
             ToolbarItem(placement: .primaryAction) {
                 addFoodButton
@@ -150,41 +152,6 @@ struct ResupplyView: View {
                         }
                     }
                 }
-        }
-    }
-    
-    var exportDataButton: some View {
-        Button("Export Data") {
-            guard let source = UIApplication.shared.windows.last?.rootViewController else {
-                return
-            }
-            
-            var activityItems = [URL]()
-            
-            if let resuppliesPath =
-                FileManager.filePath(FileDataStore.resuppliesFilePath) {
-                activityItems.append(resuppliesPath)
-            }
-            
-            if let productsPath =
-                FileManager.filePath(FileDataStore.productsFilePath) {
-                activityItems.append(productsPath)
-            }
-            
-            
-            
-            let activityVC = UIActivityViewController(
-                activityItems: activityItems,
-                applicationActivities: nil)
-            
-            if let popoverController = activityVC.popoverPresentationController {
-                popoverController.sourceView = source.view
-                popoverController.sourceRect = CGRect(x: source.view.bounds.midX,
-                                                      y: source.view.bounds.midY,
-                                                      width: .zero, height: .zero)
-                popoverController.permittedArrowDirections = []
-            }
-            source.present(activityVC, animated: true)
         }
     }
     

@@ -18,8 +18,8 @@ class FileDataStore : NSObject {
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
     
-    public static let productsFilePath = "products.json"
-    public static let resuppliesFilePath = "resupplies.json"
+    private static let productsFilePath = "products.json"
+    private static let resuppliesFilePath = "resupplies.json"
     
     func initializeDataStore() async {
         async let _ = await getProducts()
@@ -188,5 +188,19 @@ extension FileDataStore : ResupplyDataStore {
 extension FileDataStore {
     override var description : String {
         return ("Resupplies:\n\(resupplies)\nProducts:\n\(products)")
+    }
+    
+    static func debugData() -> [URL] {
+        var debugURLs : [URL] = []
+        
+        if let productsUrl = FileManager.filePath(Self.productsFilePath) {
+            debugURLs.append(productsUrl)
+        }
+        
+        if let resupplyUrl = FileManager.filePath(Self.resuppliesFilePath) {
+            debugURLs.append(resupplyUrl)
+        }
+        
+        return debugURLs
     }
 }

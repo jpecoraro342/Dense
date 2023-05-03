@@ -8,35 +8,20 @@
 
 import SwiftUI
 
-//struct FloatingTextField: View {
-//    let title: String
-//    let text: Binding<String>
-//
-//    var body: some View {
-//        ZStack(alignment: .topLeading) {
-//            TextField("", text: text) // give TextField an empty placeholder
-//            //                .textFieldStyle(.roundedBorder)
-//            Text(title)
-//                .foregroundColor(Color(.placeholderText))
-//                .offset(y: text.wrappedValue.isEmpty ? 6 : -25)
-//                .scaleEffect(text.wrappedValue.isEmpty ? 1 : 0.8, anchor: .leading)
-//        }
-//        .padding(.top, 15)
-//        .animation(.easeOut(duration: 0.25), value: text.wrappedValue.isEmpty)
-//    }
-//}
-
 struct FloatingTextField: View {
     let title: String
     let placeholder: String
     let text: Binding<String>
+    /// If you want the floating title to show based on an alternate value in addition to the primary text
+    let alternateText: Binding<String>
     
     let style : Style
     
-    init(_ title: String, placeholder: String = "", text: Binding<String>, style: Style = .adaptive) {
+    init(_ title: String, placeholder: String = "", text: Binding<String>, alternateText: Binding<String> = .constant(""), style: Style = .adaptive) {
         self.title = title
         self.placeholder = placeholder
         self.text = text
+        self.alternateText = alternateText
         self.style = style
     }
     
@@ -53,7 +38,7 @@ struct FloatingTextField: View {
             }
         case .adaptive:
             VStack(alignment: .leading, spacing: 2) {
-                if !text.wrappedValue.isEmpty {
+                if !text.wrappedValue.isEmpty || !alternateText.wrappedValue.isEmpty {
                     Text(title)
                         .font(.caption)
                         .foregroundColor(Color(.placeholderText))

@@ -32,11 +32,12 @@
 		15385A9829AFA66E008DA5A1 /* BarcodeButtonPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A9729AFA66E008DA5A1 /* BarcodeButtonPrompt.swift */; };
 		15385A9A29AFEB15008DA5A1 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A9929AFEB15008DA5A1 /* View.swift */; };
 		15532CC329CDEFA400CF1B28 /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15532CC229CDEFA400CF1B28 /* NSError.swift */; };
-		15532CC729D0D98100CF1B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15532CC629D0D98100CF1B28 /* Assets.xcassets */; };
 		1563A2562A003BE300B72687 /* MultiSelectFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1563A2552A003BE300B72687 /* MultiSelectFoodView.swift */; };
 		15A0D9A329B7A51E0089D8CF /* DummyDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A0D9A229B7A51E0089D8CF /* DummyDataStore.swift */; };
 		15A45BFA29DB64AB001693C3 /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A45BF929DB64AB001693C3 /* FloatingTextField.swift */; };
 		15B21B4B2A02D6D200BE11C1 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B21B4A2A02D6D200BE11C1 /* FileManager.swift */; };
+		15B21B4E2A02E18900BE11C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15B21B4D2A02E18900BE11C1 /* Assets.xcassets */; };
+		15B21B502A02E1A600BE11C1 /* DebugMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B21B4F2A02E1A600BE11C1 /* DebugMenuView.swift */; };
 		15D2A1DB29B92B960053F496 /* ResupplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */; };
 		15D2A1DD29C656CE0053F496 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1DC29C656CE0053F496 /* Color.swift */; };
 		15D2A1E529C888DD0053F496 /* DenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2A1E429C888DD0053F496 /* DenseTests.swift */; };
@@ -83,11 +84,12 @@
 		15385A9729AFA66E008DA5A1 /* BarcodeButtonPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeButtonPrompt.swift; sourceTree = "<group>"; };
 		15385A9929AFEB15008DA5A1 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		15532CC229CDEFA400CF1B28 /* NSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
-		15532CC629D0D98100CF1B28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resuply/Assets.xcassets; sourceTree = "<group>"; };
 		1563A2552A003BE300B72687 /* MultiSelectFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectFoodView.swift; sourceTree = "<group>"; };
 		15A0D9A229B7A51E0089D8CF /* DummyDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataStore.swift; sourceTree = "<group>"; };
 		15A45BF929DB64AB001693C3 /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
 		15B21B4A2A02D6D200BE11C1 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		15B21B4D2A02E18900BE11C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		15B21B4F2A02E1A600BE11C1 /* DebugMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugMenuView.swift; sourceTree = "<group>"; };
 		15D2A1DA29B92B960053F496 /* ResupplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplyViewModel.swift; sourceTree = "<group>"; };
 		15D2A1DC29C656CE0053F496 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		15D2A1E229C888DD0053F496 /* DenseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DenseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,7 +165,7 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		15385A7529AE60C8008DA5A1 /* Resuply */ = {
+		15385A7529AE60C8008DA5A1 /* Resupply */ = {
 			isa = PBXGroup;
 			children = (
 				1520702529DB9F920034E7DE /* ListViews */,
@@ -173,7 +175,7 @@
 				1536E7C029B1B32B00010988 /* Resupply.swift */,
 				15385A8229AE714C008DA5A1 /* FoodCalculator.swift */,
 			);
-			path = Resuply;
+			path = Resupply;
 			sourceTree = "<group>";
 		};
 		15385A7929AE62B0008DA5A1 /* Navigation */ = {
@@ -230,6 +232,14 @@
 			path = Products;
 			sourceTree = "<group>";
 		};
+		15B21B4C2A02E0DA00BE11C1 /* Debug Menu */ = {
+			isa = PBXGroup;
+			children = (
+				15B21B4F2A02E1A600BE11C1 /* DebugMenuView.swift */,
+			);
+			path = "Debug Menu";
+			sourceTree = "<group>";
+		};
 		15D2A1E329C888DD0053F496 /* DenseTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,8 +288,9 @@
 				15385A7929AE62B0008DA5A1 /* Navigation */,
 				15385A9329AF8DA6008DA5A1 /* BarcodeScanner */,
 				15385A9629AF8E61008DA5A1 /* Products */,
-				15385A7529AE60C8008DA5A1 /* Resuply */,
-				15532CC629D0D98100CF1B28 /* Assets.xcassets */,
+				15385A7529AE60C8008DA5A1 /* Resupply */,
+				15B21B4C2A02E0DA00BE11C1 /* Debug Menu */,
+				15B21B4D2A02E18900BE11C1 /* Assets.xcassets */,
 				15D3EE79230FD97B00F97FA6 /* LaunchScreen.storyboard */,
 				15D3EE7C230FD97B00F97FA6 /* Info.plist */,
 			);
@@ -375,7 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15D3EE7B230FD97B00F97FA6 /* LaunchScreen.storyboard in Resources */,
-				15532CC729D0D98100CF1B28 /* Assets.xcassets in Resources */,
+				15B21B4E2A02E18900BE11C1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +410,7 @@
 				1520702329DB921C0034E7DE /* ResupplyDaySummary.swift in Sources */,
 				1536E7B529B07D0000010988 /* Bundle.swift in Sources */,
 				15385A8729AE8894008DA5A1 /* CoordinatorView.swift in Sources */,
+				15B21B502A02E1A600BE11C1 /* DebugMenuView.swift in Sources */,
 				15D2A1EF29C8C1950053F496 /* DoubleAdaptable.swift in Sources */,
 				15D7356629DB515D0071D3FE /* Colors.swift in Sources */,
 				15385A9829AFA66E008DA5A1 /* BarcodeButtonPrompt.swift in Sources */,

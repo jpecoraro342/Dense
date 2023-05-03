@@ -78,10 +78,10 @@ struct AddFoodView: View {
             FloatingTextField("Number of Servings", text: $numberOfServings)
                 .keyboardType(.decimalPad)
             HStack {
-                FloatingTextField("Serving Size (g)", text: $servingSizeG)
+                FloatingTextField("Serving Size (g)", text: $servingSizeG, alternateText: $netWtG)
                     .keyboardType(.decimalPad)
                 Text("or")
-                FloatingTextField("Net Wt (g)", text: $netWtG)
+                FloatingTextField("Net Wt (g)", text: $netWtG, alternateText: $servingSizeG)
                     .keyboardType(.decimalPad)
             }
             
