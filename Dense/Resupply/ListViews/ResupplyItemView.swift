@@ -12,6 +12,8 @@ struct ResupplyItemView: View {
     @State var food: FoodViewModel
     @State var quantity: String
     
+    @FocusState private var quantityFocused : Bool
+    
     var quantityUpdated: (Double) -> Void
     
     init(food: FoodViewModel, quantityUpdated: @escaping (Double) -> Void) {
@@ -40,8 +42,12 @@ struct ResupplyItemView: View {
                         Spacer()
                         Text("Quantity:")
                             .padding(.trailing, 0)
+                            .onTapGesture {
+                                quantityFocused = true
+                            }
                         TextField("0", text: $quantity)
                             .keyboardType(.decimalPad)
+                            .focused($quantityFocused)
                             .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 10))
                             .multilineTextAlignment(.center)
                             .fixedSize()

@@ -18,7 +18,9 @@ struct DebugMenuView: View {
     }
     
     var exportDataButton: some View {
-        ShareLink("Export Data", items: FileDataStore.debugData())
+        ShareLink(items: FileDataStore.debugData()) {
+            Label("Export Data", systemImage: "square.and.arrow.up").frame(maxWidth: .infinity, alignment: .center)
+        }
     }
 }
 

@@ -9,12 +9,18 @@
 import SwiftUI
 
 struct ResupplyDaySummary: View {
+    private enum Field: Int, Hashable {
+        case targetDays, caloriesPerDay
+    }
+    
     @Binding var resupply : ResupplyViewModel
     
     @State var isExpanded : Bool
     
     @State var caloriesPerDay : String
     @State var targetDays : String
+    
+    @FocusState private var focusedField : Field?
     
     var caloriesPerDayUpdated: (Double) -> Void
     var targetDaysUpdated: (Double) -> Void
@@ -37,8 +43,12 @@ struct ResupplyDaySummary: View {
                 Divider()
                 HStack {
                     Text("Target Days:")
+                        .onTapGesture {
+                            focusedField = .targetDays
+                        }
                     TextField("", value: $resupply.targetNumberOfDays, formatter: formatter)
                         .keyboardType(.decimalPad)
+                        .focused($focusedField, equals: .targetDays)
                         .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 10))
                         .multilineTextAlignment(.center)
                         .fixedSize()
@@ -48,8 +58,12 @@ struct ResupplyDaySummary: View {
                         .onTapGesture {/* capture tap to prevent keyboard dismiss */}
                     Spacer()
                     Text("Calories/Day:")
+                        .onTapGesture {
+                            focusedField = .caloriesPerDay
+                        }
                     TextField("", value: $resupply.caloriesPerDay, formatter: formatter)
                         .keyboardType(.decimalPad)
+                        .focused($focusedField, equals: .caloriesPerDay)
                         .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 10))
                         .multilineTextAlignment(.center)
                         .fixedSize()
