@@ -26,9 +26,10 @@ struct MultiSelectFoodView: View {
     
     var body: some View {
         List {
-            // Loop through all the products
-            // Display product, and check box
-            // Checkbox is selected if food is in resupply
+            if (products.isEmpty) {
+                Text("No foods to show. Get started by adding foods, then use multiselect to quickly make large changes.")
+                    .listRowSeparator(.hidden)
+            }
             ForEach(products.indices, id: \.self) { index in
                 HStack {
                     // TODO: Make a version of grams to lbsoz that takes a string
@@ -64,5 +65,7 @@ struct MultiSelectFoodView_Previews: PreviewProvider {
     static var previews: some View {
         MultiSelectFoodView(
             dataStore: DummyDataStore(), selectedProducts: ["2" : true], productUpdated: {_,_  in })
+        MultiSelectFoodView(
+            dataStore: DummyDataStore(products: [], resupplies: []), selectedProducts: [:], productUpdated: {_,_  in })
     }
 }

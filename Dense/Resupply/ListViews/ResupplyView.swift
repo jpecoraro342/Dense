@@ -12,6 +12,8 @@ struct ResupplyView: View {
     @State var resupplyId : String?
     @State var resupply : ResupplyViewModel
     
+    @State var productCount : Int = 0
+    
     @State private var showingAddFood = false
     @State private var showingResetConfirmation = false
     
@@ -41,11 +43,11 @@ struct ResupplyView: View {
         .navigationTitle("Resupply")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .secondaryAction) {
-                addFoodButton
+            ToolbarItem(placement: .primaryAction) {
+                multiAddButton
             }
             ToolbarItem(placement: .secondaryAction) {
-                multiAddButton
+                addFoodButton
             }
             ToolbarItem(placement: .secondaryAction) {
                 resetButton
@@ -54,9 +56,6 @@ struct ResupplyView: View {
                 NavigationLink("Debug Menu") {
                     DebugMenuView(dataStore: dataStore)
                 }
-            }
-            ToolbarItem(placement: .primaryAction) {
-                addFoodButton
             }
         }
         .toolbarBackground(
@@ -81,10 +80,15 @@ struct ResupplyView: View {
                 })
             }
             .onDelete(perform: delete(at:))
-            if (resupply.foods.count == 0) {
-                Text("").listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
+            if (resupply.foods.isEmpty) {
+                Text("Get started by adding new foods, or selecting from previously added foods.")
             }
+            addFoodButton
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding([.vertical], 10.0)
+                .listRowSeparator(.hidden)
+                .listRowBackground(Color.clear)
+                .buttonStyle(.borderless)
             // TODO: If resupply is empty, and products list is not empty, show "quick add" button here
         }
         .listStyle(.plain)
@@ -127,29 +131,33 @@ struct ResupplyView: View {
     }
     
     var multiAddButton: some View {
-        NavigationLink("Add Saved Foods") {
-            MultiSelectFoodView(
-                dataStore: dataStore,
-                // TODO: Do this mapping in a view model, or in the multiselect food view
-                selectedProducts: $resupply.foods.reduce(into: [String: Bool]()) {
-                    $0[$1.productId.wrappedValue] = true
-                }) { productId, isSelected in
-                    // TODO: put this logic somewhere else
-                    // TODO: This feels very not thread safe
-                    Task {
-                        if (!isSelected) {
-                            await dataStore.removeItem(productId, fromResupply: resupply.id)
-                            await updateResupplyViewModel()
-                        } else if let _ = resupply.foods.firstIndex(where: { $0.productId == productId }) {
-                            // Don't bother adding the product if it's already there
-                            return
-                        } else {
-                            await dataStore.putItem(ResupplyItem(productId: productId, quantity: 1), toResupply: resupply.id)
-                            await updateResupplyViewModel()
-                        }
+        NavigationLink("Select Foods") {
+            multiSelectFoodView
+        }
+    }
+    
+    var multiSelectFoodView: some View {
+        MultiSelectFoodView(
+            dataStore: dataStore,
+            // TODO: Do this mapping in a view model, or in the multiselect food view
+            selectedProducts: $resupply.foods.reduce(into: [String: Bool]()) {
+                $0[$1.productId.wrappedValue] = true
+            }) { productId, isSelected in
+                // TODO: put this logic somewhere else
+                // TODO: This feels very not thread safe
+                Task {
+                    if (!isSelected) {
+                        await dataStore.removeItem(productId, fromResupply: resupply.id)
+                        await updateResupplyViewModel()
+                    } else if let _ = resupply.foods.firstIndex(where: { $0.productId == productId }) {
+                        // Don't bother adding the product if it's already there
+                        return
+                    } else {
+                        await dataStore.putItem(ResupplyItem(productId: productId, quantity: 1), toResupply: resupply.id)
+                        await updateResupplyViewModel()
                     }
                 }
-        }
+            }
     }
     
     func initResupply() async {
@@ -186,11 +194,6 @@ struct ResupplyView: View {
                 await updateResupplyViewModel()
             }
         }
-    }
-    
-    func delete(id: String) async {
-        await dataStore.removeItem(id, fromResupply: resupply.id)
-        await updateResupplyViewModel()
     }
 }
 
