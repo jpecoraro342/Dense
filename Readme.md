@@ -5,8 +5,6 @@ Dense is designed for the most intense gram weenie, who not only needs their gea
 
 **Coming Soon**
 
-- [ ] Set target calories/day, and show how many days of food you have in your resupply
-- [ ] Quickly start a new resupply by adding items you've previously used
 - [ ] Save a history of your resupplies so you can see what you had last time
 - [ ] Update open food facts api from directly within the app
 - [ ] Dev mode to manage all the data stored locally on your device
@@ -19,7 +17,43 @@ Dense uses the api at [Open Food Facts](https://world.openfoodfacts.org/) to fet
 
 **Privacy Policy**
 
-Dense does not collect any user data
+This Privacy Policy is designed to inform you about the information we collect, how we use it, and your options regarding the use of that information.
+
+### 1. Information We Collect
+
+We collect the following information from you when you use Dense:
+
+- Usage Analytics: We collect usage analytics data, such as the features you use and the frequency of your usage of those features.
+
+- Device Information: We may collect information about the device you use to access our app, including the type of device, the operating system version, and the unique device identifier.
+
+### 2. How We Use Your Information
+
+We use the information we collect to:
+
+- Improve Our App: We use the usage analytics data we collect to identify trends and patterns in how our app is used, which helps us to improve the app and provide a better user experience.
+
+- Technical Support: We may use the device information we collect to provide technical support and troubleshoot any issues you may experience.
+
+### 3. Sharing Your Information
+
+We do not share your information with third parties, except as required by law.
+
+### 4. Your Choices
+
+You can choose to disable the collection of usage analytics data in the settings of the app.
+
+### 5. Data Retention
+
+We retain usage analytics data for a period of 12 months. After that time, we will delete the data.
+
+### 6. Changes to this Privacy Policy
+
+We may update this Privacy Policy from time to time. If we make any material changes to the way we collect or use your information, we will notify you by email or by posting a notice on our website.
+
+### 7. Contact Us
+
+If you have any questions about this Privacy Policy or our practices, please contact us at jpecoraro342@gmail.com.
 
 **Icon Attribution:**
 - <a href="https://www.flaticon.com/free-icons/law" title="law icons">Law icons created by Kiranshastry - Flaticon</a>
