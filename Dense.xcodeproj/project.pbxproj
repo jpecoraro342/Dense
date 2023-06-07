@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15002DD12A30D007004D66C1 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15002DD02A30D007004D66C1 /* Analytics.swift */; };
 		1520702329DB921C0034E7DE /* ResupplyDaySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1520702229DB921C0034E7DE /* ResupplyDaySummary.swift */; };
 		1536E7AF29B06D1A00010988 /* JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536E7AE29B06D1A00010988 /* JSONEncoder.swift */; };
 		1536E7B129B06EC100010988 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536E7B029B06EC100010988 /* JSONDecoder.swift */; };
@@ -46,6 +47,7 @@
 		15D3EE6F230FD97900F97FA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D3EE6E230FD97900F97FA6 /* AppDelegate.swift */; };
 		15D3EE7B230FD97B00F97FA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D3EE79230FD97B00F97FA6 /* LaunchScreen.storyboard */; };
 		15D7356629DB515D0071D3FE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D7356529DB515D0071D3FE /* Colors.swift */; };
+		15ECCE662A0BCC3E009CB577 /* BasicAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 15ECCE652A0BCC3E009CB577 /* BasicAnalytics */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15002DD02A30D007004D66C1 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		1520702229DB921C0034E7DE /* ResupplyDaySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplyDaySummary.swift; sourceTree = "<group>"; };
 		1536E7AE29B06D1A00010988 /* JSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncoder.swift; sourceTree = "<group>"; };
 		1536E7B029B06EC100010988 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 		15D3EE7A230FD97B00F97FA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15D3EE7C230FD97B00F97FA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15D7356529DB515D0071D3FE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		15ECCE632A0BCC08009CB577 /* BasicAnalytics */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = BasicAnalytics; path = "../BasicAnalytics/BasicAnalytics-iOS/BasicAnalytics"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,12 +119,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15ECCE662A0BCC3E009CB577 /* BasicAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15002DCF2A30CFE0004D66C1 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				15002DD02A30D007004D66C1 /* Analytics.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 		1520702429DB9F870034E7DE /* SummaryViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +245,14 @@
 			path = Products;
 			sourceTree = "<group>";
 		};
+		15B1A6B52A0AB59C0001638F /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				15ECCE632A0BCC08009CB577 /* BasicAnalytics */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		15B21B4C2A02E0DA00BE11C1 /* Debug Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,9 +283,11 @@
 		15D3EE62230FD97900F97FA6 = {
 			isa = PBXGroup;
 			children = (
+				15B1A6B52A0AB59C0001638F /* Packages */,
 				15D3EE6D230FD97900F97FA6 /* Dense */,
 				15D2A1E329C888DD0053F496 /* DenseTests */,
 				15D3EE6C230FD97900F97FA6 /* Products */,
+				15ECCE642A0BCC3E009CB577 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -280,6 +303,7 @@
 		15D3EE6D230FD97900F97FA6 /* Dense */ = {
 			isa = PBXGroup;
 			children = (
+				15002DCF2A30CFE0004D66C1 /* Analytics */,
 				15D2A1ED29C8AECE0053F496 /* Utilities */,
 				1536E7B829B12B7D00010988 /* StartupDelegates */,
 				15385A8C29AEC75F008DA5A1 /* Extensions */,
@@ -295,6 +319,13 @@
 				15D3EE7C230FD97B00F97FA6 /* Info.plist */,
 			);
 			path = Dense;
+			sourceTree = "<group>";
+		};
+		15ECCE642A0BCC3E009CB577 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +362,9 @@
 			dependencies = (
 			);
 			name = Dense;
+			packageProductDependencies = (
+				15ECCE652A0BCC3E009CB577 /* BasicAnalytics */,
+			);
 			productName = "Food Weight Calculator";
 			productReference = 15D3EE6B230FD97900F97FA6 /* Dense.app */;
 			productType = "com.apple.product-type.application";
@@ -433,6 +467,7 @@
 				15D2A1DD29C656CE0053F496 /* Color.swift in Sources */,
 				1536E7BD29B1921900010988 /* URLRequest.swift in Sources */,
 				15385A9529AF8E2C008DA5A1 /* BarcodeScannerView.swift in Sources */,
+				15002DD12A30D007004D66C1 /* Analytics.swift in Sources */,
 				1536E7C129B1B32B00010988 /* Resupply.swift in Sources */,
 				15A0D9A329B7A51E0089D8CF /* DummyDataStore.swift in Sources */,
 				15385A8929AE8B81008DA5A1 /* ResupplySummaryView.swift in Sources */,
@@ -699,6 +734,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		15ECCE652A0BCC3E009CB577 /* BasicAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BasicAnalytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 15D3EE63230FD97900F97FA6 /* Project object */;
 }

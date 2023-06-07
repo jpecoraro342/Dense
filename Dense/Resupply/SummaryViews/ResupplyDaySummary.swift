@@ -45,6 +45,7 @@ struct ResupplyDaySummary: View {
                     Text("Target Days:")
                         .onTapGesture {
                             focusedField = .targetDays
+                            Analytics.shared.logEvent(.targetDaysTapped)
                         }
                     TextField("", value: $resupply.targetNumberOfDays, formatter: formatter)
                         .keyboardType(.decimalPad)
@@ -54,12 +55,14 @@ struct ResupplyDaySummary: View {
                         .fixedSize()
                         .onChange(of: $resupply.wrappedValue.targetNumberOfDays) { targetDays in
                             self.targetDaysUpdated(targetDays)
+                            Analytics.shared.logEvent(.targetDaysUpdated)
                         }
                         .onTapGesture {/* capture tap to prevent keyboard dismiss */}
                     Spacer()
                     Text("Calories/Day:")
                         .onTapGesture {
                             focusedField = .caloriesPerDay
+                            Analytics.shared.logEvent(.caloriesPerDayTapped)
                         }
                     TextField("", value: $resupply.caloriesPerDay, formatter: formatter)
                         .keyboardType(.decimalPad)
@@ -69,6 +72,7 @@ struct ResupplyDaySummary: View {
                         .fixedSize()
                         .onChange(of: $resupply.wrappedValue.caloriesPerDay) { caloriesPerDay in
                             self.caloriesPerDayUpdated(caloriesPerDay)
+                            Analytics.shared.logEvent(.caloriesPerDayUpdated)
                         }
                         .onTapGesture {/* capture tap to prevent keyboard dismiss */}
                 }

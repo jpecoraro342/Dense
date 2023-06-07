@@ -56,6 +56,9 @@ struct ResupplyView: View {
                 NavigationLink("Debug Menu") {
                     DebugMenuView(dataStore: dataStore)
                 }
+                .simultaneousGesture(TapGesture().onEnded{
+                    Analytics.shared.logEvent(.debugMenuClicked, location: "")
+                })
             }
         }
         .toolbarBackground(
@@ -98,6 +101,7 @@ struct ResupplyView: View {
     var addFoodButton: some View {
         Button("Add Food") {
             showingAddFood = true
+            Analytics.shared.logEvent(.addFoodTapped)
         }
         .sheet(isPresented: $showingAddFood) {
             AddFoodView(dataStore: dataStore) { product in
@@ -107,6 +111,8 @@ struct ResupplyView: View {
                         await dataStore.putItem(resupplyItem, toResupply: resupply.id)
                         await updateResupplyViewModel()
                     }
+                    
+                    Analytics.shared.logEvent(.resupplyItemAdded, extras: ["id": product.code])
                 }
             }
         }
@@ -115,16 +121,20 @@ struct ResupplyView: View {
     var resetButton: some View {
         Button("Clear Resupply") {
             showingResetConfirmation = true
+            Analytics.shared.logEvent(.resetButtonTapped)
         }
         .alert("Are you sure you want to clear all foods from the resupply?", isPresented: $showingResetConfirmation) {
             Button("Clear", role: .destructive) {
+                Analytics.shared.logEvent(.resetConfirmTapped)
                 Task {
                     if let resupply = await dataStore.resetResupply(id: resupply.id) {
                         self.resupply = ResupplyViewModel(resupply: resupply, products: await dataStore.getProducts())
                     }
                 }
             }
-            Button("Cancel", role: .cancel) { }
+            Button("Cancel", role: .cancel) {
+                Analytics.shared.logEvent(.resetCancelTapped)
+            }
         } message: {
             Text("This will clear all foods added to this resupply")
         }
@@ -134,6 +144,9 @@ struct ResupplyView: View {
         NavigationLink("Select Foods") {
             multiSelectFoodView
         }
+        .simultaneousGesture(TapGesture().onEnded{
+            Analytics.shared.logEvent(.multiselectTapped)
+        })
     }
     
     var multiSelectFoodView: some View {
@@ -192,6 +205,8 @@ struct ResupplyView: View {
                 let item = resupply.foods[index]
                 await dataStore.removeItem(item.resupplyItem(), fromResupply: id)
                 await updateResupplyViewModel()
+                
+                Analytics.shared.logEvent(.resupplyItemDeleted, extras: ["id": item.productId])
             }
         }
     }

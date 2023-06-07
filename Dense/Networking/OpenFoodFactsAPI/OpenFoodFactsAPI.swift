@@ -32,8 +32,10 @@ class OpenFoodFactsAPI : NSObject {
 
     func getProduct(fromBarcode barcode: String) async -> (Product?, NSError?) {
         guard let url = urlForBarcode(barcode: barcode) else {
-            print("error building url")
-            return (nil, NSError(localizedDescription: "Unable to get url for barcode"))
+            let error = NSError(localizedDescription: "Unable to get url for barcode")
+            Analytics.shared.logEvent(.barcodeDataFetchFailed, extras: ["error": error.debugDescription])
+            
+            return (nil, error)
         }
         
         var request = URLRequest(url: url)
@@ -47,10 +49,26 @@ class OpenFoodFactsAPI : NSObject {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             let paginatedProducts = try decoder.decode(PaginatedProducts.self, from: data)
-            return (paginatedProducts.products.first, nil)
+            let product = paginatedProducts.products.first
+            
+            if let product = product {
+                Analytics.shared.logEvent(.barcodeDataFetched,
+                                          extras: ["barcode": barcode,
+                                                   "name": product.productName,
+                                                   "calories": "\(product.nutriments.energyKcalServing ?? -1)",
+                                                   "netWtG": product.productQuantity ?? "null",
+                                                   "servingSizeG": product.servingQuantity ?? "null"])
+            } else {
+                Analytics.shared.logEvent(.barcodeDataFetched,
+                                          extras: ["barcode": barcode,
+                                                   "product": "null"])
+            }
+            
+            return (product, nil)
         }
         catch {
-            print("error: \(error)")
+            Analytics.shared.logEvent(.barcodeDataFetchFailed, extras: ["barcode": barcode, "error": "\(error)"])
+            
             return(nil, NSError(error: error))
         }
     }

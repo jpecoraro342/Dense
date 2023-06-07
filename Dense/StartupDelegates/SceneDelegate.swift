@@ -20,6 +20,8 @@ class SceneDelegate: NSObject, UISceneDelegate {
             
             self.window = window
         }
+        
+        let _ = Analytics.shared.initialize()
     }
     
     func rootViewController() -> UIViewController? {

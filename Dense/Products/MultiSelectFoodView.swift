@@ -22,7 +22,7 @@ struct MultiSelectFoodView: View {
     var productUpdated: (String, Bool) -> Void
     
     // TODO: Add a done/cancel button
-    // TODO: Auto update constantly
+    // TODO: Debounce saving
     
     var body: some View {
         List {
@@ -50,6 +50,8 @@ struct MultiSelectFoodView: View {
                     let selected = !selectedProducts[products[index].code, default: false]
                     selectedProducts[product.code] = selected
                     productUpdated(product.code, selected)
+                    
+                    Analytics.shared.logEvent(.multiselectProductTapped, location: "multiselect", extras: ["id": product.code, "selected": "\(selected)"])
                 }
             }
         }

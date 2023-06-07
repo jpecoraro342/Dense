@@ -32,16 +32,17 @@ struct AddFoodView: View {
                 BarcodeButtonPrompt { barcode in
                     Task {
                         isLoadingBarcode = true
+                        
+                        Analytics.shared.logEvent(.barcodeScanned, extras: ["barcode": barcode])
+
                         let (product, error) = await dataStore.getProduct(barcode: barcode)
                         
                         if let product = product {
                             self.product = product
                             updateStateWithProduct()
-                        } else {
-                            print("unable to retrieve food from barcode")
                         }
                         
-                        self.error = error?.localizedDescription
+                        self.error = error?.debugDescription
                         isLoadingBarcode = false
                     }
                 }
@@ -87,6 +88,7 @@ struct AddFoodView: View {
             
             HStack(alignment: .center, spacing: 20) {
                 Button("Cancel") {
+                    Analytics.shared.logEvent(.canceledAddingProduct, extras: ["id": product?.code ?? "null"])
                     dismiss()
                 }
                 .buttonStyle(.bordered)
@@ -109,6 +111,8 @@ struct AddFoodView: View {
                                servingSizeG: servingSizeG,
                                netWtG: netWtG)
             await dataStore.putProduct(product)
+            
+            Analytics.shared.logEvent(.productUpdated, extras: ["id": product.code])
             action(product)
         } else {
             let product = Product(name: name,
@@ -117,6 +121,8 @@ struct AddFoodView: View {
                                   servingSizeG: servingSizeG,
                                   netWtG: netWtG)
             await dataStore.putProduct(product)
+            
+            Analytics.shared.logEvent(.productSaved, extras: ["id": product.code])
             action(product)
         }
         
@@ -143,7 +149,7 @@ struct AddFoodView: View {
         
         let numberOfServings = (Double(netWtG) ?? 0) / (Double(servingSizeG) ?? 0)
         if numberOfServings != 0 {
-            self.numberOfServings = "\(numberOfServings)"
+            self.numberOfServings = NumberFormatter.decimalFormatter().string(numberOfServings)
         }
     }
 }

@@ -59,6 +59,7 @@ extension FileDataStore : ProductDataStore {
             self.products = products
         }
         
+        Analytics.shared.logEvent(.productsInitialized, extras: ["count": "\(products.count)"])
         productsInitialized = true
         return products
     }
@@ -101,6 +102,7 @@ extension FileDataStore : ResupplyDataStore {
             self.resupplies = resupplies
         }
         
+        Analytics.shared.logEvent(.resuppliesInitialized)
         resuppliesInitialized = true
         return resupplies
     }

@@ -15,6 +15,8 @@ Dense is designed for the most intense gram weenie, who not only needs their gea
 
 Dense uses the api at [Open Food Facts](https://world.openfoodfacts.org/) to fetch nutrition information from barcodes. As this API is based on user submitted data, information may be missing or incomplete. You can help the open food facts initiative by updating data at [the open food facts website](https://world.openfoodfacts.org/help-complete-products) or with the [open food facts app.](https://apps.apple.com/us/app/open-food-facts-product-scan/id588797948)
 
+See the [the wiki](https://wiki.openfoodfacts.org/Data_fields) for issues regarding [serving size](https://wiki.openfoodfacts.org/Data_fields#Serving_size) and [quantity (net wt.)](https://wiki.openfoodfacts.org/Data_fields#Quantity) to make sure that you are properly updating the data. 
+
 **Privacy Policy**
 
 This Privacy Policy is designed to inform you about the information we collect, how we use it, and your options regarding the use of that information.

@@ -44,6 +44,7 @@ struct ResupplyItemView: View {
                             .padding(.trailing, 0)
                             .onTapGesture {
                                 quantityFocused = true
+                                Analytics.shared.logEvent(.quantityTapped)
                             }
                         TextField("0", text: $quantity)
                             .keyboardType(.decimalPad)
@@ -55,6 +56,8 @@ struct ResupplyItemView: View {
                                 if let quantity = Double($0) {
                                     food.quantity = quantity
                                     self.quantityUpdated(quantity)
+                                    
+                                    Analytics.shared.logEvent(.quantityUpdated)
                                 }
                             }
                     }
