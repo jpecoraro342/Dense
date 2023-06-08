@@ -89,3 +89,7 @@ iOSInjectionProject/
 
 # Mac Files
 .DS_Store
+
+# Private App Configuration
+
+Dense/Config.xcconfig

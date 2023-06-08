@@ -18,6 +18,7 @@ struct BarcodeButtonPrompt: View {
         // TODO: Show different view if denied camera permissions, or unavailable
         VStack {
             Button() {
+                Analytics.shared.logEvent(.scanBarcodeTapped)
                 Task {
                     await showBarcodeScanner()
                 }

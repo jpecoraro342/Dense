@@ -12,11 +12,19 @@ import BasicAnalytics
 class Analytics {
     public static let shared = Analytics()
     
+    private static let analyticsUrl : URL = URL(string: "https://analytics.joseph-pecoraro.com/events")!
+    
+    private static let analyticsHeaderFields : [String : String?] = [
+        "CF-Access-Client-Id": Bundle.main.infoDictionary?["ANALYTICS_API_KEY"] as? String,
+        "CF-Access-Client-Secret": Bundle.main.infoDictionary?["ANALYTICS_API_SECRET"] as? String
+    ]
+    
     private init() {}
     
     public func initialize() {
         let _ = BasicAnalytics.Analytics.shared.initialize(Configuration(
-            url: URL(string: "https://analytics.joseph-pecoraro.com/events")!,
+            url: Self.analyticsUrl,
+            httpHeaderFields: Self.analyticsHeaderFields,
             uploadTimerSeconds: 40
         ))
     }
