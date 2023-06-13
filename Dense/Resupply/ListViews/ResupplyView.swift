@@ -44,20 +44,21 @@ struct ResupplyView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                multiAddButton
-            }
-            ToolbarItem(placement: .secondaryAction) {
-                addFoodButton
+                SheetButton("Add Food", action: {
+                    Analytics.shared.logEvent(.addFoodTapped, location: "header")
+                }) {
+                    addFoodView
+                }
             }
             ToolbarItem(placement: .secondaryAction) {
                 resetButton
             }
             ToolbarItem(placement: .secondaryAction) {
-                NavigationLink("Debug Menu") {
-                    DebugMenuView(dataStore: dataStore)
+                NavigationLink("Settings") {
+                    SettingsView(dataStore: dataStore)
                 }
-                .simultaneousGesture(TapGesture().onEnded{
-                    Analytics.shared.logEvent(.debugMenuClicked, location: "")
+                .simultaneousGesture(TapGesture().onEnded {
+                    Analytics.shared.logEvent(.settingsClicked)
                 })
             }
         }
@@ -86,34 +87,43 @@ struct ResupplyView: View {
             if (resupply.foods.isEmpty) {
                 Text("Get started by adding new foods, or selecting from previously added foods.")
             }
-            addFoodButton
-                .frame(maxWidth: .infinity, alignment: .center)
-                .padding([.vertical], 10.0)
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color.clear)
-                .buttonStyle(.borderless)
+            addButtonsFooter
             // TODO: If resupply is empty, and products list is not empty, show "quick add" button here
         }
         .listStyle(.plain)
         .scrollDismissesKeyboard(.immediately)
     }
     
-    var addFoodButton: some View {
-        Button("Add Food") {
-            showingAddFood = true
-            Analytics.shared.logEvent(.addFoodTapped)
+    var addButtonsFooter: some View {
+        HStack {
+            multiAddButton
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding([.vertical], 10.0)
+                .buttonStyle(.borderless)
+            Divider()
+            SheetButton("Add Food", action: {
+                Analytics.shared.logEvent(.addFoodTapped, location: "footer")
+            }) {
+                addFoodView
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding([.vertical], 10.0)
+            .buttonStyle(.borderless)
         }
-        .sheet(isPresented: $showingAddFood) {
-            AddFoodView(dataStore: dataStore) { product in
-                if let product = product {
-                    let resupplyItem = ResupplyItem(productId: product.code, quantity: 1)
-                    Task {
-                        await dataStore.putItem(resupplyItem, toResupply: resupply.id)
-                        await updateResupplyViewModel()
-                    }
-                    
-                    Analytics.shared.logEvent(.resupplyItemAdded, extras: ["id": product.code])
+        .listRowSeparator(.hidden)
+        .listRowBackground(Color.clear)
+    }
+    
+    var addFoodView: some View {
+        AddFoodView(dataStore: dataStore) { product in
+            if let product = product {
+                let resupplyItem = ResupplyItem(productId: product.code, quantity: 1)
+                Task {
+                    await dataStore.putItem(resupplyItem, toResupply: resupply.id)
+                    await updateResupplyViewModel()
                 }
+                
+                Analytics.shared.logEvent(.resupplyItemAdded, extras: ["id": product.code])
             }
         }
     }
@@ -141,36 +151,36 @@ struct ResupplyView: View {
     }
     
     var multiAddButton: some View {
-        NavigationLink("Select Foods") {
+        SheetButton("Select Foods", action: { Analytics.shared.logEvent(.multiselectTapped, location: "footer") }) {
             multiSelectFoodView
         }
-        .simultaneousGesture(TapGesture().onEnded{
-            Analytics.shared.logEvent(.multiselectTapped)
-        })
     }
     
     var multiSelectFoodView: some View {
-        MultiSelectFoodView(
-            dataStore: dataStore,
-            // TODO: Do this mapping in a view model, or in the multiselect food view
-            selectedProducts: $resupply.foods.reduce(into: [String: Bool]()) {
-                $0[$1.productId.wrappedValue] = true
-            }) { productId, isSelected in
-                // TODO: put this logic somewhere else
-                // TODO: This feels very not thread safe
-                Task {
-                    if (!isSelected) {
-                        await dataStore.removeItem(productId, fromResupply: resupply.id)
-                        await updateResupplyViewModel()
-                    } else if let _ = resupply.foods.firstIndex(where: { $0.productId == productId }) {
-                        // Don't bother adding the product if it's already there
-                        return
-                    } else {
-                        await dataStore.putItem(ResupplyItem(productId: productId, quantity: 1), toResupply: resupply.id)
-                        await updateResupplyViewModel()
+        NavigationView {
+            MultiSelectFoodView(
+                dataStore: dataStore,
+                // TODO: Do this mapping in a view model, or in the multiselect food view
+                selectedProducts: $resupply.foods.reduce(into: [String: Bool]()) {
+                    $0[$1.productId.wrappedValue] = true
+                }) { productId, isSelected in
+                    // TODO: put this logic somewhere else
+                    // TODO: This feels very not thread safe
+                    Task {
+                        if (!isSelected) {
+                            await dataStore.removeItem(productId, fromResupply: resupply.id)
+                            await updateResupplyViewModel()
+                        } else if let _ = resupply.foods.firstIndex(where: { $0.productId == productId }) {
+                            // Don't bother adding the product if it's already there
+                            return
+                        } else {
+                            await dataStore.putItem(ResupplyItem(productId: productId, quantity: 1), toResupply: resupply.id)
+                            await updateResupplyViewModel()
+                        }
                     }
                 }
-            }
+                .navigationBarTitleDisplayMode(.inline)
+        }
     }
     
     func initResupply() async {

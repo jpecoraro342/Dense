@@ -55,10 +55,18 @@ struct MultiSelectFoodView: View {
                 }
             }
         }
-        .navigationTitle("Select Foods")
         .listStyle(.plain)
+        .navigationTitle("Select Foods")
         .task {
             products = await dataStore.getProducts()
+        }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button("Done") {
+                    Analytics.shared.logEvent(.multiselectDismissTapped)
+                    dismiss()
+                }
+            }
         }
     }
 }

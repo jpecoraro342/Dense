@@ -43,7 +43,7 @@ enum Event : String, CustomStringConvertible {
     case resuppliesInitialized, productsInitialized
     
     // ResupplyView
-    case addFoodTapped, scanBarcodeTapped, multiselectTapped, resetButtonTapped, resetCancelTapped, resetConfirmTapped
+    case addFoodTapped, scanBarcodeTapped, multiselectTapped, multiselectDismissTapped, resetButtonTapped, resetCancelTapped, resetConfirmTapped
     
     // Resupply Items
     case resupplyItemAdded, resupplyItemDeleted, quantityTapped, quantityUpdated
@@ -54,8 +54,8 @@ enum Event : String, CustomStringConvertible {
     // Products
     case productSaved, productUpdated, canceledAddingProduct
 
-    // Debug Menu
-    case debugMenuClicked
+    // Settings
+    case settingsClicked
     
     // Multiselect
     case multiselectProductTapped
