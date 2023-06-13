@@ -19,9 +19,13 @@ class Analytics {
         "CF-Access-Client-Secret": Bundle.main.infoDictionary?["ANALYTICS_API_SECRET"] as? String
     ]
     
+    private var analyticsEnabled : Bool = false
+    
     private init() {}
     
     public func start() {
+        analyticsEnabled = true
+
         let _ = BasicAnalytics.Analytics.shared.initialize(Configuration(
             url: Self.analyticsUrl,
             httpHeaderFields: Self.analyticsHeaderFields,
@@ -30,15 +34,18 @@ class Analytics {
     }
     
     public func logEvent(_ name: Event, location: String? = nil, extras: [String : String] = [:]) {
-        BasicAnalytics.Analytics.shared.logEvent(BasicAnalytics.Event(
-            eventName: "\(name)",
-            eventLocation: location,
-            extras: extras
-        ))
+        if analyticsEnabled {
+            BasicAnalytics.Analytics.shared.logEvent(BasicAnalytics.Event(
+                eventName: "\(name)",
+                eventLocation: location,
+                extras: extras
+            ))
+        }
     }
     
     public func stop() {
         BasicAnalytics.Analytics.shared.stop()
+        analyticsEnabled = false
     }
 }
 
