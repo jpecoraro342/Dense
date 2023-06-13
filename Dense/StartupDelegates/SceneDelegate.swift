@@ -21,7 +21,11 @@ class SceneDelegate: NSObject, UISceneDelegate {
             self.window = window
         }
         
-        let _ = Analytics.shared.initialize()
+        UserDefaults.standard.setDefaults()
+        
+        if UserDefaults.standard.bool(forKey: UserDefaults.analyticsEnabledKey) {
+            Analytics.shared.start()
+        }
     }
     
     func rootViewController() -> UIViewController? {

@@ -17,8 +17,7 @@ extension JSONDecoder {
                 let jsonData = try self.decode(T.self, from: data)
                 return jsonData
             } catch {
-                // TODO: Handle Error
-                print("error: \(error)")
+                Analytics.shared.logEvent(.errorReadingFromFile, extras: ["error" : error.localizedDescription])
             }
         }
         

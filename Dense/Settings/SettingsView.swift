@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @State var dataStore : ResupplyDataStore & ProductDataStore
-    @State var analyticsOn : Bool = false
+    @AppStorage("analyticsEnabled") var analyticsEnabled : Bool = true
     
     var body: some View {
         List {
@@ -26,7 +26,14 @@ struct SettingsView: View {
     
     var analyticsToggle: some View {
         VStack {
-            Toggle("Enable Usage Analytics", isOn: $analyticsOn)
+            Toggle("Enable Usage Analytics", isOn: $analyticsEnabled)
+                .onChange(of: analyticsEnabled) { analyticsEnabled in
+                    if analyticsEnabled {
+                        Analytics.shared.start()
+                    } else {
+                        Analytics.shared.stop()
+                    }
+                }
             Text("Dense only collects basic usage data to help improve the app, and will never share your data with third parties. See our privacy policy for more info")
                 .multilineTextAlignment(.leading)
                 .font(Font.footnote)

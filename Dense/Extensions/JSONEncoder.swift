@@ -16,8 +16,7 @@ extension JSONEncoder {
                 let data = try self.encode(object)
                 try data.write(to: url)
             } catch {
-                // TODO: Handle Error
-                print("error: \(error)")
+                Analytics.shared.logEvent(.errorWritingToFile, extras: ["error" : error.localizedDescription])
             }
         }
     }

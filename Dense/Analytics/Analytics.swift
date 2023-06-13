@@ -21,7 +21,7 @@ class Analytics {
     
     private init() {}
     
-    public func initialize() {
+    public func start() {
         let _ = BasicAnalytics.Analytics.shared.initialize(Configuration(
             url: Self.analyticsUrl,
             httpHeaderFields: Self.analyticsHeaderFields,
@@ -36,11 +36,15 @@ class Analytics {
             extras: extras
         ))
     }
+    
+    public func stop() {
+        BasicAnalytics.Analytics.shared.stop()
+    }
 }
 
 enum Event : String, CustomStringConvertible {
     // FileDataStore
-    case resuppliesInitialized, productsInitialized
+    case errorReadingFromFile, errorWritingToFile
     
     // ResupplyView
     case addFoodTapped, scanBarcodeTapped, multiselectTapped, multiselectDismissTapped, resetButtonTapped, resetCancelTapped, resetConfirmTapped

@@ -34,6 +34,7 @@
 		15385A9A29AFEB15008DA5A1 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15385A9929AFEB15008DA5A1 /* View.swift */; };
 		15532CC329CDEFA400CF1B28 /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15532CC229CDEFA400CF1B28 /* NSError.swift */; };
 		15572CE02A38E81E00C5814C /* SheetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15572CDF2A38E81D00C5814C /* SheetButton.swift */; };
+		15572CE22A38F47D00C5814C /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15572CE12A38F47D00C5814C /* UserDefaults.swift */; };
 		1563A2562A003BE300B72687 /* MultiSelectFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1563A2552A003BE300B72687 /* MultiSelectFoodView.swift */; };
 		15A0D9A329B7A51E0089D8CF /* DummyDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A0D9A229B7A51E0089D8CF /* DummyDataStore.swift */; };
 		15A45BFA29DB64AB001693C3 /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A45BF929DB64AB001693C3 /* FloatingTextField.swift */; };
@@ -90,6 +91,7 @@
 		15385A9929AFEB15008DA5A1 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		15532CC229CDEFA400CF1B28 /* NSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
 		15572CDF2A38E81D00C5814C /* SheetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetButton.swift; sourceTree = "<group>"; };
+		15572CE12A38F47D00C5814C /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		1563A2552A003BE300B72687 /* MultiSelectFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectFoodView.swift; sourceTree = "<group>"; };
 		15A0D9A229B7A51E0089D8CF /* DummyDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataStore.swift; sourceTree = "<group>"; };
 		15A45BF929DB64AB001693C3 /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				15D2A1DC29C656CE0053F496 /* Color.swift */,
 				15532CC229CDEFA400CF1B28 /* NSError.swift */,
 				15B21B4A2A02D6D200BE11C1 /* FileManager.swift */,
+				15572CE12A38F47D00C5814C /* UserDefaults.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				1536E7C429B1BCFB00010988 /* DataStore.swift in Sources */,
 				1536E7AF29B06D1A00010988 /* JSONEncoder.swift in Sources */,
 				15385A9A29AFEB15008DA5A1 /* View.swift in Sources */,
+				15572CE22A38F47D00C5814C /* UserDefaults.swift in Sources */,
 				15A45BFA29DB64AB001693C3 /* FloatingTextField.swift in Sources */,
 				1536E7B329B0773200010988 /* OpenFoodFactsAPI.swift in Sources */,
 				1536E7B129B06EC100010988 /* JSONDecoder.swift in Sources */,
